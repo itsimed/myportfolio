@@ -52,6 +52,10 @@ try {
     console.log('✅ JavaScript file cleaned and wrapped in IIFE');
   }
   
+  // Create .nojekyll file to prevent GitHub Pages from processing as Jekyll
+  fs.writeFileSync(path.join(distPath, '.nojekyll'), '');
+  console.log('✅ Created .nojekyll file');
+  
 } catch (error) {
   console.error('❌ Error fixing files:', error);
   process.exit(1);
