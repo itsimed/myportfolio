@@ -6,7 +6,7 @@
   "homepage": "https://imedbelouettar.me",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && node scripts/fix-html.js",
     "lint": "eslint .",
     "preview": "vite preview"
   },
