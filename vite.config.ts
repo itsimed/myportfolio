@@ -14,7 +14,14 @@ export default defineConfig({
         entryFileNames: 'assets/[name]-[hash].js',
         chunkFileNames: 'assets/[name]-[hash].js',
         assetFileNames: 'assets/[name]-[hash].[ext]',
-        inlineDynamicImports: true
+        inlineDynamicImports: true,
+        manualChunks: undefined
+      }
+    },
+    minify: 'terser',
+    terserOptions: {
+      format: {
+        comments: false
       }
     }
   }
