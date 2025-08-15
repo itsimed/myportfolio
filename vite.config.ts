@@ -15,14 +15,14 @@ export default defineConfig({
         chunkFileNames: 'assets/[name]-[hash].js',
         assetFileNames: 'assets/[name]-[hash].[ext]',
         inlineDynamicImports: true,
-        manualChunks: undefined
+        manualChunks: undefined,
+        globals: {
+          'react': 'React',
+          'react-dom': 'ReactDOM'
+        }
       }
     },
-    minify: 'terser',
-    terserOptions: {
-      format: {
-        comments: false
-      }
-    }
+    minify: false,
+    sourcemap: false
   }
 })

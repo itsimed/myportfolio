@@ -8,14 +8,28 @@ try {
   // Fix HTML
   let html = fs.readFileSync(htmlPath, 'utf8');
   
-  // Remove type="module" from script tags
-  html = html.replace(/type="module"/g, '');
+  // Find the script tag and get the JS file name
+  const scriptMatch = html.match(/<script[^>]*src="\.\/assets\/([^"]+\.js)"[^>]*>/);
   
-  // Also remove crossorigin if present to avoid any issues
-  html = html.replace(/crossorigin/g, '');
-  
-  fs.writeFileSync(htmlPath, html);
-  console.log('✅ HTML fixed: removed type="module" and crossorigin from script tags');
+  if (scriptMatch) {
+    const jsFileName = scriptMatch[1];
+    
+    // Replace the entire script tag with CDN versions and our script
+    const newScriptTags = `
+    <script crossorigin src="https://unpkg.com/react@19/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@19/umd/react-dom.production.min.js"></script>
+    <script src="./assets/${jsFileName}"></script>
+    `;
+    
+    // Remove the old script tag completely
+    html = html.replace(/<script[^>]*src="\.\/assets\/[^"]+\.js"[^>]*>.*?<\/script>/s, '');
+    
+    // Add the new script tags before closing body tag
+    html = html.replace('</body>', `${newScriptTags}\n  </body>`);
+    
+    fs.writeFileSync(htmlPath, html);
+    console.log('✅ HTML fixed: replaced with CDN React and local script');
+  }
   
   // Find and fix the main JavaScript file
   const files = fs.readdirSync(path.join(distPath, 'assets'));
@@ -25,12 +39,17 @@ try {
     const jsPath = path.join(distPath, 'assets', jsFile);
     let jsContent = fs.readFileSync(jsPath, 'utf8');
     
-    // Ensure the file starts with a proper IIFE wrapper
+    // Remove any module-related code and ensure it's a plain script
+    jsContent = jsContent.replace(/import\s+.*?from\s+['"][^'"]+['"];?\n?/g, '');
+    jsContent = jsContent.replace(/export\s+.*?;?\n?/g, '');
+    
+    // Ensure it starts with a proper IIFE wrapper
     if (!jsContent.startsWith('(function(')) {
       jsContent = `(function() {\n${jsContent}\n})();`;
-      fs.writeFileSync(jsPath, jsContent);
-      console.log('✅ JavaScript file wrapped in IIFE');
     }
+    
+    fs.writeFileSync(jsPath, jsContent);
+    console.log('✅ JavaScript file cleaned and wrapped in IIFE');
   }
   
 } catch (error) {
