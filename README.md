@@ -4,7 +4,7 @@ Personal portfolio website showcasing my work as a Front-end Developer & UI/UX D
 
 ## 🚀 Live Demo
 
-Visit my portfolio at: [https://itsimed.github.io/myportfolio](https://itsimed.github.io/myportfolio)
+Visit my portfolio at: [https://imedbelouettar.me](https://imedbelouettar.me)
 
 ## 🛠️ Technologies Used
 
