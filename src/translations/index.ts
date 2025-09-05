@@ -116,7 +116,7 @@ export const translations = {
     // Contact Section
     contact: {
       title: 'Connectons-nous',
-      subtitle: 'Je suis toujours excité d\'entendre parler de nouvelles opportunités et de projets intéressants. Que vous vouliez collaborer, avoir une question ou simplement dire bonjour, j\'aimerais avoir de vos nouvelles !',
+      subtitle: 'Je suis toujours ravi d\'entendre parler de nouvelles opportunités et de projets intéressants. Que vous vouliez collaborer, avoir une question ou simplement dire bonjour, j\'aimerais avoir de vos nouvelles !',
       getInTouch: 'Entrer en contact',
       sendMessage: 'Envoyer un message',
       form: {
