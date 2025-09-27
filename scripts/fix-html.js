@@ -16,8 +16,8 @@ try {
     
     // Replace the entire script tag with CDN versions and our script
     const newScriptTags = `
-    <script crossorigin src="https://unpkg.com/react@19/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@19/umd/react-dom.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react@19.1.0/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@19.1.0/umd/react-dom.production.min.js"></script>
     <script src="./assets/${jsFileName}"></script>
     `;
     
