@@ -17,6 +17,7 @@ export const translations = {
       description: 'Designer UI/UX créatif et développeur front-end, passionné par la création d\'expériences numériques intuitives. Compétent dans la direction d\'équipes, la gestion de projets et la transformation d\'idées en produits impactants, avec une touche d\'analyse basée sur les données.',
       projectsButton: 'Projets',
       followMe: 'Suivez-moi',
+      downloadCV: 'Télécharger CV',
       typewriter: {
         pair1: { left: 'Développeur', right: 'Front-end' },
         pair2: { left: 'UI/UX', right: 'Designer' },
@@ -181,6 +182,7 @@ export const translations = {
       description: 'Creative UI/UX designer and front-end developer, passionate about building intuitive digital experiences. Skilled in leading teams, managing projects, and turning ideas into impactful products, with a touch of data-driven insight.',
       projectsButton: 'Projects',
       followMe: 'Follow Me',
+      downloadCV: 'Download CV',
       typewriter: {
         pair1: { left: 'Front end', right: 'Developer' },
         pair2: { left: 'UI/UX', right: 'Designer' },
