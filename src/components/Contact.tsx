@@ -3,6 +3,7 @@ import { useMemo, useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { SiGithub, SiLinkedin, SiTelegram } from 'react-icons/si';
 import { HiOutlineMail, HiOutlineGlobeAlt } from 'react-icons/hi';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const { t } = useLanguage();
@@ -16,6 +17,7 @@ const Contact = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
+  const [isSuccess, setIsSuccess] = useState(false);
   const [errors, setErrors] = useState<{ name?: string; email?: string; subject?: string; message?: string }>({});
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -45,15 +47,40 @@ const Contact = () => {
     if (!validate()) return;
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setSubmitMessage(t('contact.form.success'));
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    setIsSubmitting(false);
-    
-    // Clear success message after 5 seconds
-    setTimeout(() => setSubmitMessage(''), 5000);
+    try {
+      // Configuration EmailJS
+      const serviceId = 'service_a99rdnb';
+      const templateId = 'template_g7mcdge';
+      const publicKey = 'O6YC_1QFGdyFHdCvG';
+      
+      // Paramètres du template EmailJS
+      const templateParams = {
+        user_name: formData.name,
+        user_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+      };
+      
+      // Envoi de l'email via EmailJS
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      
+      setSubmitMessage(t('contact.form.success'));
+      setIsSuccess(true);
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      
+    } catch (error) {
+      console.error('Erreur lors de l\'envoi de l\'email:', error);
+      setSubmitMessage(t('contact.form.error'));
+      setIsSuccess(false);
+    } finally {
+      setIsSubmitting(false);
+      
+      // Clear success/error message after 5 seconds
+      setTimeout(() => {
+        setSubmitMessage('');
+        setIsSuccess(false);
+      }, 5000);
+    }
   };
 
   const socialLinks = useMemo(() => ([
@@ -357,10 +384,18 @@ const Contact = () => {
                     <motion.div
                       initial={{ opacity: 0, y: 20, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
-                      className="bg-gradient-to-r from-green-500/10 to-green-600/10 border border-green-500/20 rounded-xl p-4 text-center"
+                      className={`rounded-xl p-4 text-center ${
+                        isSuccess 
+                          ? 'bg-gradient-to-r from-green-500/10 to-green-600/10 border border-green-500/20' 
+                          : 'bg-gradient-to-r from-red-500/10 to-red-600/10 border border-red-500/20'
+                      }`}
                     >
-                      <p className="text-green-500 font-semibold flex items-center justify-center gap-2">
-                        <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                      <p className={`font-semibold flex items-center justify-center gap-2 ${
+                        isSuccess ? 'text-green-500' : 'text-red-500'
+                      }`}>
+                        <span className={`w-2 h-2 rounded-full ${
+                          isSuccess ? 'bg-green-500' : 'bg-red-500'
+                        }`}></span>
                         {submitMessage}
                       </p>
                     </motion.div>

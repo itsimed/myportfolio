@@ -131,6 +131,7 @@ export const translations = {
         sending: 'Envoi du message...',
         send: 'Envoyer le message',
         success: 'Merci ! Votre message a été envoyé avec succès.',
+        error: 'Erreur lors de l\'envoi du message. Veuillez réessayer.',
         errors: {
           name: 'Veuillez entrer votre nom.',
           email: 'Veuillez entrer une adresse email valide.',
@@ -294,6 +295,7 @@ export const translations = {
         sending: 'Sending Message...',
         send: 'Send Message',
         success: 'Thank you! Your message has been sent successfully.',
+        error: 'Error sending message. Please try again.',
         errors: {
           name: 'Please enter your name.',
           email: 'Please enter a valid email.',
