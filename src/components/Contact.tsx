@@ -292,7 +292,7 @@ const Contact = () => {
                         className={`w-full px-4 py-4 bg-foreground/5 border rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all duration-300 ${
                           errors.email ? 'border-red-500 bg-red-500/5' : 'border-foreground/10 hover:border-foreground/20'
                         }`}
-                        placeholder={t('contact.form.emailPlaceholder')}
+                        placeholder="mail@example.com"
                       />
                       {errors.email && (
                         <motion.p 
