@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, type JSX } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 type WordPair = { left: string; right: string };
@@ -100,8 +100,14 @@ const Hero = () => {
     ],
     { pauseBeforeDeleteMs: 5000 },
   );
-
-  const socialLinks = [
+  type SocialLink = {
+  name: string;
+  icon: JSX.Element;
+  url: string;
+  download?: boolean;
+  filename?: string;
+};
+  const socialLinks: SocialLink[] = [
     { 
       name: 'GitHub', 
       icon: (
