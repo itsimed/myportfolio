@@ -142,7 +142,7 @@ const Hero = () => {
           <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
         </svg>
       ), 
-      url: 'https://storage.googleapis.com/wiizassets/portfolio%20rayan/CV%20Imed%20Belouettar.pdf',
+      url: 'https://storage.googleapis.com/publicasse/my_portfolio/CV%20Imed%20Belouettar.pdf',
     },
   ];
 
@@ -293,21 +293,21 @@ const Carousel = () => {
       id: 1,
       title: 'wassalni',
       description: t('hero.carousel.wassalni.description'),
-      image: 'https://storage.googleapis.com/wiizassets/portfolio%20rayan/wass.webp',
+      image: 'https://storage.googleapis.com/publicasse/my_portfolio/wass.webp',
       href: 'https://imgur.com/a/wassalni-app-B01sowE',
     },
     {
       id: 2,
       title: 'divanhane',
       description: t('hero.carousel.divanhane.description'),
-      image: 'https://storage.googleapis.com/wiizassets/portfolio%20rayan/dh.webp',
+      image: 'https://storage.googleapis.com/publicasse/my_portfolio/divan.webp',
       href: 'https://divanhane.vercel.app',
     },
     {
       id: 3,
       title: 'picci',
       description: t('hero.carousel.picci.description'),
-      image: 'https://storage.googleapis.com/wiizassets/portfolio%20rayan/picci.webp',
+      image: 'https://storage.googleapis.com/publicasse/my_portfolio/picci.webp',
       href: 'https://picci-five.vercel.app/',
     },
   ];

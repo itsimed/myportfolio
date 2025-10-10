@@ -11,7 +11,7 @@ const Projects = () => {
       technologies: ['React Native', 'TypeScript', 'Node.js', 'MongoDB', 'Firebase'],
       liveDemo: 'https://imgur.com/a/wassalni-app-B01sowE',
       github: 'https://github.com/itsimed/wassalni',
-      image: 'https://storage.googleapis.com/wiizassets/portfolio%20rayan/wass.webp',
+      image: 'https://storage.googleapis.com/publicasse/my_portfolio/wass.webp',
     },
     {
       id: 2,
@@ -19,7 +19,7 @@ const Projects = () => {
       technologies: ['Next.js', 'TypeScript', 'TailwindCSS'],
       liveDemo: 'https://divanhane.vercel.app',
       github: 'https://github.com/itsimed/divanhane',
-      image: 'https://storage.googleapis.com/wiizassets/portfolio%20rayan/dh.webp',
+      image: 'https://storage.googleapis.com/publicasse/my_portfolio/divan.webp',
     },
     {
       id: 3,
@@ -27,28 +27,28 @@ const Projects = () => {
       technologies: ['Next.js', 'TypeScript', 'TailwindCSS'],
       liveDemo: 'https://bdtech-azure.vercel.app/',
       github: 'https://github.com/itsimed/bdtech',
-      image: 'https://storage.googleapis.com/wiizassets/portfolio%20rayan/bdt.webp',
+      image: 'https://storage.googleapis.com/publicasse/my_portfolio/bd.webp',
     },
     {
       id: 4,
       title: 'cabinetcm',
       liveDemo: 'https://cabinetcm.vercel.app/',
       github: 'https://github.com/itsimed/cabinetcm',
-      image: 'https://storage.googleapis.com/wiizassets/portfolio%20rayan/cm.webp',
+      image: 'https://storage.googleapis.com/publicasse/my_portfolio/cm.webp',
     },
     {
       id: 5,
       title: 'elitepartners',
       liveDemo: 'https://elitepartnersgroup.vercel.app/',
       github: 'https://github.com/itsimed/elitepartnersgroup',
-      image: 'https://storage.googleapis.com/wiizassets/portfolio%20rayan/EPG.webp',
+      image: 'https://storage.googleapis.com/publicasse/my_portfolio/epg.webp',
     },
     {
       id: 6,
       title: 'picci',
       liveDemo: 'https://picci-five.vercel.app/',
       github: 'https://github.com/itsimed/picci',
-      image: 'https://storage.googleapis.com/wiizassets/portfolio%20rayan/picci.webp',
+      image: 'https://storage.googleapis.com/publicasse/my_portfolio/picci.webp',
     },
   ];
 
