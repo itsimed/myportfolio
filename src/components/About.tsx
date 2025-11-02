@@ -30,7 +30,7 @@ const About = () => {
                 <div className="w-full h-full bg-gradient-primary rounded-full p-1">
                   <div className="w-full h-full bg-background rounded-full flex items-center justify-center">
                     <div className="w-48 sm:w-56 md:w-72 h-48 sm:h-56 md:h-72 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full flex items-center justify-center">
-                      <img src="../../public/Belouettar Imed Eddine.webp" alt="My photo" className="w-full h-full object-cover rounded-full" />
+                      <img src="https://storage.googleapis.com/publicasse/my_portfolio/Belouettar%20Imed%20Eddine.webp" alt="My photo" className="w-full h-full object-cover rounded-full" />
                     </div>
                   </div>
                 </div>
