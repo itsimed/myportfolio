@@ -30,9 +30,7 @@ const About = () => {
                 <div className="w-full h-full bg-gradient-primary rounded-full p-1">
                   <div className="w-full h-full bg-background rounded-full flex items-center justify-center">
                     <div className="w-48 sm:w-56 md:w-72 h-48 sm:h-56 md:h-72 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full flex items-center justify-center">
-                      <svg className="w-20 sm:w-24 md:w-32 h-20 sm:h-24 md:h-32 text-primary" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                      </svg>
+                      <img src="/public/Belouettar Imed Eddine.webp" alt="My photo" className="w-full h-full object-cover rounded-full" />
                     </div>
                   </div>
                 </div>
