@@ -106,18 +106,19 @@ const Navbar = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full overflow-hidden">
         <div className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
           {/* Logo */}
-          <motion.div
+          <motion.button
             whileHover={{ scale: 1.05 }}
-            className="cursor-pointer z-10"
+            className="cursor-pointer z-10 bg-transparent border-0 p-0"
             onClick={() => scrollToSection('#hero')}
+            aria-label="Return to home"
           >
             <img 
               src="/logo.webp" 
-              alt="Portfolio Logo" 
+              alt="Imed Belouettar Portfolio Logo" 
               className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain transform-gpu will-change-transform"
               style={{ imageRendering: 'crisp-edges' }}
             />
-          </motion.div>
+          </motion.button>
 
           {/* Desktop Menu - Centered */}
           <div className="hidden lg:flex items-center justify-center absolute left-1/2 transform -translate-x-1/2 space-x-6 xl:space-x-8">
@@ -159,7 +160,7 @@ const Navbar = () => {
                 className={`text-xs lg:text-sm font-medium transition-colors duration-300 ${
                   language === 'en'
                     ? 'text-foreground underline'
-                    : 'text-foreground/70 hover:text-foreground'
+                    : 'text-foreground/85 hover:text-foreground'
                 }`}
               >
                 En
@@ -169,7 +170,7 @@ const Navbar = () => {
                 className={`text-xs lg:text-sm font-medium transition-colors duration-300 ${
                   language === 'fr'
                     ? 'text-foreground underline'
-                    : 'text-foreground/70 hover:text-foreground'
+                    : 'text-foreground/85 hover:text-foreground'
                 }`}
               >
                 Fr
@@ -180,6 +181,8 @@ const Navbar = () => {
             <div className="lg:hidden">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+                aria-expanded={isMobileMenuOpen}
                 className="text-foreground hover:text-primary transition-colors duration-300 p-1.5 sm:p-2"
               >
                 <svg
@@ -187,6 +190,7 @@ const Navbar = () => {
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
+                  aria-hidden="true"
                 >
                   {isMobileMenuOpen ? (
                     <path
@@ -224,6 +228,7 @@ const Navbar = () => {
         {/* Close Button */}
         <button
           onClick={() => setIsMobileMenuOpen(false)}
+          aria-label="Close menu"
           className="absolute top-8 right-6 text-foreground hover:text-primary transition-colors duration-300 p-2"
         >
           <svg
@@ -231,6 +236,7 @@ const Navbar = () => {
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
+            aria-hidden="true"
           >
             <path
               strokeLinecap="round"
@@ -256,14 +262,14 @@ const Navbar = () => {
         {/* Language Selector - Mobile */}
         <div className="mt-8 pt-8 border-t border-foreground/20">
           <div className="flex flex-col items-center space-y-4">
-            <span className="text-sm text-foreground/70">Language</span>
+            <span className="text-sm text-foreground/90">Language</span>
             <div className="flex space-x-6">
               <button
                 onClick={() => setLanguage('en')}
                 className={`text-lg font-bold transition-colors duration-300 px-4 py-2 rounded-lg ${
                   language === 'en'
                     ? 'text-primary bg-primary/10 border-2 border-primary/30'
-                    : 'text-foreground/70 hover:text-foreground hover:bg-foreground/5'
+                    : 'text-foreground/90 hover:text-foreground hover:bg-foreground/5'
                 }`}
               >
                 En
@@ -273,7 +279,7 @@ const Navbar = () => {
                 className={`text-lg font-bold transition-colors duration-300 px-4 py-2 rounded-lg ${
                   language === 'fr'
                     ? 'text-primary bg-primary/10 border-2 border-primary/30'
-                    : 'text-foreground/70 hover:text-foreground hover:bg-foreground/5'
+                    : 'text-foreground/90 hover:text-foreground hover:bg-foreground/5'
                 }`}
               >
                 Fr

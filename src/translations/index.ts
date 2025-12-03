@@ -46,15 +46,16 @@ export const translations = {
     // About Section
     about: {
       title: 'À propos de moi',
-      description1: 'Je suis un étudiant en Big Data de 22 ans passionné par la création de solutions numériques impactantes. Je me spécialise dans la conception UI/UX et le développement front-end, créant des interfaces intuitives et engageantes soutenues par une solide conception de base de données, une gestion de projets et des compétences en analyse de données.',
-      description2: 'Mon background en Big Data me permet de combiner créativité et prise de décision basée sur les données, livrant des solutions qui sont à la fois visuellement attrayantes et techniquement efficaces. Toujours désireux d\'apprendre et d\'explorer de nouvelles technologies, je m\'efforce de créer des produits qui laissent un impact durable.',
+      description1: 'Je conçois et développe des interfaces modernes, accessibles et pensées pour répondre aux besoins réels de tous les utilisateurs. À la croisée de l\'UX, du front-end et de l\'accessibilité numérique, je transforme des idées en expériences digitales fluides, inclusives et performantes.',
+      description2: 'Actuellement en Master MIASHS – Technologie & Handicap à l\'Université Paris 8, cette formation s\'impose comme la suite logique de mon parcours. Elle me permet de dépasser la simple maîtrise technique pour acquérir une compréhension profonde de l\'utilisateur et de ses besoins cognitifs. J\'y développe une expertise unique pour concevoir des solutions qui s\'adaptent réellement à l\'individu, et non l\'inverse.',
+      description3: 'En tant que Développeur Front-End et UX/UI Designer, j\'ai piloté des projets complets : de la compréhension du besoin et du prototypage jusqu\'au développement final. Curieux et orienté solutions, je crée de la valeur en combinant rigueur technique et sensibilité humaine.',
       skills: {
         uiux: 'Conception UI/UX',
         frontend: 'Développement Front-end',
-        dataAnalysis: 'Analyse de données',
-        database: 'Conception de base de données',
-        projectManagement: 'Gestion de projets et d\'équipes',
-        dataDriven: 'Basé sur les données',
+        accessibility: 'Accessibilité numérique',
+        userResearch: 'Recherche utilisateur',
+        projectManagement: 'Gestion de projets',
+        inclusiveDesign: 'Design inclusif',
       },
     },
 
@@ -211,15 +212,16 @@ export const translations = {
     // About Section
     about: {
       title: 'About Me',
-      description1: 'I\'m a 22-year-old Big Data student passionate about building impactful digital solutions. I specialize in UI/UX design and front-end development, creating intuitive, engaging interfaces backed by solid database design, project management, and data analysis skills.',
-      description2: 'My Big Data background allows me to combine creativity with data-driven decision-making, delivering solutions that are both visually appealing and technically efficient. Always eager to learn and explore new technologies, I strive to create products that leave a lasting impact.',
+      description1: 'I design and develop modern, accessible interfaces designed to meet the real needs of all users. At the intersection of UX, front-end development, and digital accessibility, I transform ideas into smooth, inclusive, and high-performing digital experiences.',
+      description2: 'Currently pursuing a Master\'s degree in MIASHS – Technology & Disability at Paris 8 University, this program is the logical continuation of my journey. It allows me to go beyond mere technical mastery to gain a deep understanding of users and their cognitive needs. Here, I develop unique expertise to design solutions that truly adapt to individuals, not the other way around.',
+      description3: 'As a Front-End Developer and UX/UI Designer, I have led complete projects: from understanding needs and prototyping to final development. Curious and solution-oriented, I create value by combining technical rigor with human sensitivity.',
       skills: {
         uiux: 'UI/UX Design',
         frontend: 'Front-end Development',
-        dataAnalysis: 'Data Analysis',
-        database: 'Database Design',
-        projectManagement: 'Project & Team Management',
-        dataDriven: 'Data-driven',
+        accessibility: 'Digital Accessibility',
+        userResearch: 'User Research',
+        projectManagement: 'Project Management',
+        inclusiveDesign: 'Inclusive Design',
       },
     },
 

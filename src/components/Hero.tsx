@@ -111,7 +111,7 @@ const Hero = () => {
     { 
       name: 'GitHub', 
       icon: (
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
         </svg>
       ), 
@@ -120,7 +120,7 @@ const Hero = () => {
     { 
       name: 'LinkedIn', 
       icon: (
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
         </svg>
       ), 
@@ -129,7 +129,7 @@ const Hero = () => {
     { 
       name: 'Telegram', 
       icon: (
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
         </svg>
       ), 
@@ -138,7 +138,7 @@ const Hero = () => {
     { 
       name: 'CV', 
       icon: (
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
         </svg>
       ), 
@@ -199,7 +199,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="order-2 lg:order-1 text-base sm:text-lg leading-relaxed text-gray-300 max-w-2xl pr-0 lg:pr-6"
+              className="order-2 lg:order-1 text-base sm:text-lg leading-relaxed text-foreground/90 max-w-2xl pr-0 lg:pr-6"
             >
               {t('hero.description')}
             </motion.p>
@@ -258,7 +258,7 @@ const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
                 className="flex items-center space-x-1.5 sm:space-x-2 px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 border border-white/25 rounded-full text-white hover:bg-white/10 transition-all duration-300 cursor-pointer min-w-fit"
-                title={link.name}
+                aria-label={`${link.name} - ${link.download ? 'Download CV' : 'Visit profile'}`}
               >
                 {link.icon}
                 <span className="text-xs sm:text-sm font-medium whitespace-nowrap">{link.name}</span>
@@ -347,7 +347,7 @@ const Carousel = () => {
                       {p.image ? (
                         <img 
                           src={p.image} 
-                          alt={t(`hero.carousel.${p.title}.title`)}
+                          alt={`${t(`hero.carousel.${p.title}.title`)} project preview`}
                           className="w-full h-full object-cover"
                         />
                       ) : (
@@ -359,26 +359,30 @@ const Carousel = () => {
                     {/* Right content */}
                     <div className="md:w-1/2 p-4 sm:p-5 md:p-6 lg:p-8">
                       <h3 className="text-lg sm:text-xl md:text-2xl lg:text-[1.7rem] font-extrabold text-white mb-2 sm:mb-3 leading-snug">{t(`hero.carousel.${p.title}.title`)}</h3>
-                      <p className="text-gray-300/90 mb-3 sm:mb-4 md:mb-6 leading-relaxed text-xs sm:text-sm md:text-base">{p.description}</p>
+                      <p className="text-white/95 mb-3 sm:mb-4 md:mb-6 leading-relaxed text-xs sm:text-sm md:text-base">{p.description}</p>
                       {p.href ? (
                         <a 
                           href={p.href}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-2 sm:gap-3 rounded-full bg-white text-black px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 text-xs sm:text-sm font-semibold shadow hover:shadow-md transition-all duration-300 group"
+                          aria-label={`${t(`hero.carousel.${p.title}.button`)} - ${t(`hero.carousel.${p.title}.title`)}`}
                         >
                           <span>{t(`hero.carousel.${p.title}.button`)}</span>
                           <span className="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-full bg-black/10 transition-transform duration-300 group-hover:translate-x-0.5">
-                            <svg className="w-4 h-4 sm:w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg>
                           </span>
                         </a>
                       ) : (
-                        <button className="inline-flex items-center gap-2 sm:gap-3 rounded-full bg-white text-black px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 text-xs sm:text-sm font-semibold shadow hover:shadow-md transition-all duration-300 group">
+                        <button 
+                          className="inline-flex items-center gap-2 sm:gap-3 rounded-full bg-white text-black px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 text-xs sm:text-sm font-semibold shadow hover:shadow-md transition-all duration-300 group"
+                          aria-label="Read more about this project"
+                        >
                           <span>Read more</span>
                           <span className="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-full bg-black/10 transition-transform duration-300 group-hover:translate-x-0.5">
-                            <svg className="w-4 h-4 sm:w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg>
                           </span>
@@ -396,34 +400,43 @@ const Carousel = () => {
             <button
               onClick={prev}
               className="pointer-events-auto inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12 rounded-full bg-white/10 hover:bg-white/15 border border-white/20 backdrop-blur text-white shadow"
-              aria-label="Previous"
+              aria-label="Previous project"
             >
-              <svg className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
             <button
               onClick={next}
               className="pointer-events-auto inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12 rounded-full bg-white/10 hover:bg-white/15 border border-white/20 backdrop-blur text-white shadow"
-              aria-label="Next"
+              aria-label="Next project"
             >
-              <svg className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
           </div>
 
           {/* Dots */}
-          <div className="flex justify-center gap-1.5 sm:gap-2 mt-3 sm:mt-4">
+          <div className="flex justify-center gap-1.5 sm:gap-2 mt-3 sm:mt-4" role="tablist" aria-label="Project carousel navigation">
             {projects.map((p, i) => (
               <button
                 key={p.id}
-                aria-label={`Go to slide ${i + 1}`}
+                role="tab"
+                aria-label={`${i === index ? 'Current slide: ' : 'Go to '}${t(`hero.carousel.${p.title}.title`)} project`}
+                aria-selected={i === index}
+                aria-current={i === index ? 'true' : 'false'}
                 onClick={() => goTo(i)}
-                className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-all ${
-                  i === index ? 'bg-white w-5 sm:w-6' : 'bg-white/40 hover:bg-white/60'
-                }`}
-              />
+                className="relative group"
+              >
+                <span
+                  className={`block w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-all ${
+                    i === index ? 'bg-white w-5 sm:w-6' : 'bg-white/40 group-hover:bg-white/60'
+                  }`}
+                  aria-hidden="true"
+                />
+                <span className="sr-only">{t(`hero.carousel.${p.title}.title`)}</span>
+              </button>
             ))}
           </div>
         </div>

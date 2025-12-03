@@ -132,8 +132,16 @@ const Contact = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, y: 50, scale: 0.95 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      scale: 1,
+      transition: {
+        duration: 0.7,
+        ease: [0.16, 1, 0.3, 1] as const
+      }
+    },
   };
 
   return (
@@ -145,29 +153,37 @@ const Contact = () => {
       
       <div className="container mx-auto px-4 sm:px-6 relative z-10 w-full overflow-hidden">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-120px" }}
           className="max-w-7xl mx-auto"
         >
           {/* Header Section */}
           <div className="text-center mb-20">
             <motion.h2 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              initial={{ opacity: 0, y: 60, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ 
+                duration: 0.8,
+                delay: 0.1,
+                ease: [0.34, 1.56, 0.64, 1]
+              }}
               viewport={{ once: true }}
               className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent mb-6"
             >
               {t('contact.title')}
             </motion.h2>
             <motion.p 
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ 
+                duration: 0.7,
+                delay: 0.3,
+                ease: [0.16, 1, 0.3, 1]
+              }}
               viewport={{ once: true }}
-              className="text-xl text-muted max-w-3xl mx-auto leading-relaxed"
+              className="text-xl text-foreground/85 max-w-3xl mx-auto leading-relaxed"
             >
               {t('contact.subtitle')}
             </motion.p>
@@ -204,7 +220,7 @@ const Contact = () => {
                         <h4 className="font-semibold text-foreground mb-1">{info.title}</h4>
                         <a 
                           href={info.link} 
-                          className="text-muted hover:text-primary transition-colors duration-300"
+                          className="text-foreground/85 hover:text-primary transition-colors duration-300"
                         >
                           {info.value}
                         </a>
@@ -230,7 +246,7 @@ const Contact = () => {
                         whileHover={{ scale: 1.1, y: -2 }}
                         whileTap={{ scale: 0.95 }}
                         className={`px-3 sm:px-4 h-10 sm:h-12 bg-foreground/5 border border-foreground/10 rounded-xl inline-flex items-center justify-center transition-all duration-300 gap-2 ${link.color}`}
-                        title={link.name}
+                        aria-label={`Visit my ${link.name} profile`}
                       >
                         {link.icon}
                         <span className="text-xs sm:text-sm font-medium">{link.name}</span>
@@ -251,7 +267,7 @@ const Contact = () => {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-semibold mb-3 text-foreground/80">
+                      <label htmlFor="name" className="block text-sm font-semibold mb-3 text-foreground/95">
                         {t('contact.form.name')}
                       </label>
                       <input
@@ -261,6 +277,7 @@ const Contact = () => {
                         value={formData.name}
                         onChange={handleInputChange}
                         required
+                        autoComplete="name"
                         className={`w-full px-4 py-4 bg-foreground/5 border rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all duration-300 ${
                           errors.name ? 'border-red-500 bg-red-500/5' : 'border-foreground/10 hover:border-foreground/20'
                         }`}
@@ -279,7 +296,7 @@ const Contact = () => {
                     </div>
                     
                     <div>
-                      <label htmlFor="email" className="block text-sm font-semibold mb-3 text-foreground/80">
+                      <label htmlFor="email" className="block text-sm font-semibold mb-3 text-foreground/95">
                         {t('contact.form.email')}
                       </label>
                       <input
@@ -289,6 +306,7 @@ const Contact = () => {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
+                        autoComplete="email"
                         className={`w-full px-4 py-4 bg-foreground/5 border rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all duration-300 ${
                           errors.email ? 'border-red-500 bg-red-500/5' : 'border-foreground/10 hover:border-foreground/20'
                         }`}
@@ -308,7 +326,7 @@ const Contact = () => {
                   </div>
                   
                   <div>
-                    <label htmlFor="subject" className="block text-sm font-semibold mb-3 text-foreground/80">
+                    <label htmlFor="subject" className="block text-sm font-semibold mb-3 text-foreground/95">
                       {t('contact.form.subject')}
                     </label>
                     <input
@@ -318,6 +336,7 @@ const Contact = () => {
                       value={formData.subject}
                       onChange={handleInputChange}
                       required
+                      autoComplete="off"
                       className={`w-full px-4 py-4 bg-foreground/5 border rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all duration-300 ${
                         errors.subject ? 'border-red-500 bg-red-500/5' : 'border-foreground/10 hover:border-foreground/20'
                       }`}
@@ -336,7 +355,7 @@ const Contact = () => {
                   </div>
                   
                   <div>
-                    <label htmlFor="message" className="block text-sm font-semibold mb-3 text-foreground/80">
+                    <label htmlFor="message" className="block text-sm font-semibold mb-3 text-foreground/95">
                       {t('contact.form.message')}
                     </label>
                     <textarea
