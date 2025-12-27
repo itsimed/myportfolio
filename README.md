@@ -76,6 +76,6 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 📧 Contact
 
-- **Email**: [Your email]
-- **LinkedIn**: [Your LinkedIn]
+- **Email**: ie.belouettar@gmail.com
+- **LinkedIn**: www.linkedin.com/in/ie-belouettar
 - **GitHub**: [@itsimed](https://github.com/itsimed)

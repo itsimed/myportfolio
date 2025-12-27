@@ -87,8 +87,8 @@ const Skills = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.1,
+        staggerChildren: 0.05,
+        delayChildren: 0.05,
       },
     },
   };
@@ -96,19 +96,16 @@ const Skills = () => {
   const itemVariants = {
     hidden: { 
       opacity: 0, 
-      y: 30,
-      scale: 0.85,
-      rotateX: -15
+      y: 20,
+      scale: 0.95
     },
     visible: { 
       opacity: 1, 
       y: 0,
       scale: 1,
-      rotateX: 0,
       transition: {
-        duration: 0.6,
-        ease: [0.25, 0.4, 0.25, 1] as const,
-        opacity: { duration: 0.4 }
+        duration: 0.3,
+        ease: [0.25, 0.4, 0.25, 1] as const
       }
     },
   };
@@ -122,18 +119,18 @@ const Skills = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ 
-            duration: 0.5,
+            duration: 0.3,
             ease: "easeOut"
           }}
           viewport={{ once: true, margin: "-80px" }}
           className="max-w-6xl mx-auto"
         >
           <motion.h2 
-            initial={{ opacity: 0, y: 40, scale: 0.95 }}
+            initial={{ opacity: 0, y: 30, scale: 0.97 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ 
-              duration: 0.7,
-              delay: 0.1,
+              duration: 0.4,
+              delay: 0.05,
               ease: [0.25, 0.46, 0.45, 0.94]
             }}
             viewport={{ once: true }}
@@ -144,9 +141,9 @@ const Skills = () => {
 
           {/* Mobile Tabs */}
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            transition={{ duration: 0.3, delay: 0.1 }}
             viewport={{ once: true }}
             className="lg:hidden mb-8"
           >

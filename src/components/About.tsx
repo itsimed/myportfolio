@@ -8,22 +8,21 @@ const About = () => {
     <section id="about" className="py-12 sm:py-16 md:py-20 bg-background text-foreground">
       <div className="container mx-auto px-3 sm:px-4 md:px-6 w-full overflow-hidden">
         <motion.div
-          initial={{ opacity: 0, y: 60 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ 
-            duration: 0.7,
-            ease: [0.25, 0.4, 0.25, 1],
-            opacity: { duration: 0.6 }
+            duration: 0.4,
+            ease: [0.25, 0.4, 0.25, 1]
           }}
           viewport={{ once: true, margin: "-100px" }}
           className="max-w-6xl mx-auto"
         >
           <motion.h2 
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ 
-              duration: 0.6,
-              delay: 0.2,
+              duration: 0.4,
+              delay: 0.1,
               ease: [0.34, 1.56, 0.64, 1]
             }}
             viewport={{ once: true }}
@@ -34,11 +33,11 @@ const About = () => {
           
           <div className="grid md:grid-cols-2 items-start gap-8 sm:gap-10 md:gap-12">
             <motion.div
-              initial={{ opacity: 0, x: -60, scale: 0.8, rotate: -10 }}
-              whileInView={{ opacity: 1, x: 0, scale: 1, rotate: 0 }}
+              initial={{ opacity: 0, x: -40, scale: 0.9 }}
+              whileInView={{ opacity: 1, x: 0, scale: 1 }}
               transition={{ 
-                duration: 0.8,
-                delay: 0.3,
+                duration: 0.5,
+                delay: 0.15,
                 ease: [0.16, 1, 0.3, 1]
               }}
               viewport={{ once: true, margin: "-50px" }}
@@ -56,11 +55,11 @@ const About = () => {
             </motion.div>
             
             <motion.div
-              initial={{ opacity: 0, x: 60 }}
+              initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ 
-                duration: 0.8,
-                delay: 0.4,
+                duration: 0.5,
+                delay: 0.2,
                 ease: [0.16, 1, 0.3, 1]
               }}
               viewport={{ once: true, margin: "-50px" }}

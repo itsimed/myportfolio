@@ -96,11 +96,11 @@ const Navbar = () => {
             : 'bg-transparent'
         }`}
       transition={{
-        duration: 0.6,
+        duration: 0.3,
         ease: [0.25, 0.46, 0.45, 0.94],
         type: "spring",
-        stiffness: 100,
-        damping: 20
+        stiffness: 120,
+        damping: 22
       }}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full overflow-hidden">
@@ -130,7 +130,7 @@ const Navbar = () => {
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
                   whileHover={{ scale: 1.05 }}
-                  className={`text-sm xl:text-base font-medium px-3 py-2 rounded-lg transition-all duration-300 relative ${
+                  className={`text-sm xl:text-base font-medium px-3 py-2 rounded-lg transition-all duration-200 relative ${
                     isActive
                       ? 'text-primary bg-primary/10 border border-primary/20'
                       : 'text-foreground hover:text-primary hover:bg-foreground/5'
@@ -142,7 +142,7 @@ const Navbar = () => {
                       className="absolute inset-0 bg-primary/5 rounded-lg border border-primary/20"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      transition={{ duration: 0.3 }}
+                      transition={{ duration: 0.2 }}
                     />
                   )}
                   <span className="relative z-10">{item.name}</span>
@@ -252,7 +252,7 @@ const Navbar = () => {
               key={item.name}
               onClick={() => scrollToSection(item.href)}
               whileHover={{ scale: 1.05 }}
-              className="text-xl sm:text-2xl font-bold px-8 py-4 rounded-xl transition-all duration-300 text-foreground hover:text-primary hover:bg-foreground/5"
+              className="text-xl sm:text-2xl font-bold px-8 py-4 rounded-xl transition-all duration-200 text-foreground hover:text-primary hover:bg-foreground/5"
             >
               {item.name}
             </motion.button>

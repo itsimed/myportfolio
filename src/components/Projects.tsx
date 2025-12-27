@@ -57,13 +57,13 @@ const Projects = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.1,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0 },
   };
 
@@ -73,17 +73,17 @@ const Projects = () => {
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.3 }}
           viewport={{ once: true, margin: "-100px" }}
           className="max-w-6xl mx-auto"
         >
           <div className="flex items-end justify-between mb-10">
             <motion.h2 
-              initial={{ opacity: 0, x: -40 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ 
-                duration: 0.7,
-                delay: 0.1,
+                duration: 0.4,
+                delay: 0.05,
                 ease: [0.25, 0.46, 0.45, 0.94]
               }}
               viewport={{ once: true }}
@@ -92,11 +92,11 @@ const Projects = () => {
               {t('projects.title')}
             </motion.h2>
             <motion.a
-              initial={{ opacity: 0, x: 40 }}
+              initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ 
-                duration: 0.7,
-                delay: 0.2,
+                duration: 0.4,
+                delay: 0.1,
                 ease: [0.25, 0.46, 0.45, 0.94]
               }}
               viewport={{ once: true }}
@@ -125,11 +125,11 @@ const Projects = () => {
                 key={project.id}
                 variants={itemVariants}
                 whileHover={{ 
-                  y: -12,
+                  y: -8,
                   scale: 1.02,
-                  transition: { duration: 0.4, ease: [0.34, 1.56, 0.64, 1] }
+                  transition: { duration: 0.25, ease: [0.34, 1.56, 0.64, 1] }
                 }}
-                className="group rounded-2xl overflow-hidden border border-foreground/10 bg-gradient-to-b from-white/5 to-white/[0.02] hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300"
+                className="group rounded-2xl overflow-hidden border border-foreground/10 bg-gradient-to-b from-white/5 to-white/[0.02] hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-200"
               >
                 {/* Cover */}
                 <div className="relative h-40 w-full overflow-hidden">
@@ -196,6 +196,7 @@ const Projects = () => {
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.5 }}
               viewport={{ once: true }}
+              style={{ color: 'inherit' }}
               className="text-lg text-foreground/85 mb-8"
             >
               {t('projects.moreProjects')}
@@ -206,10 +207,11 @@ const Projects = () => {
               rel="noopener noreferrer"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.7, duration: 0.4, ease: [0.34, 1.56, 0.64, 1] }}
+              transition={{ delay: 0.7, duration: 0.4, ease: [0.34, 1.56, 0.64, 1] as const }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.08, y: -4 }}
               whileTap={{ scale: 0.95 }}
+              style={{ color: 'inherit', backgroundColor: 'inherit' }}
               className="inline-block border border-primary text-primary px-8 py-3 rounded-full font-semibold hover:bg-primary hover:text-background hover:shadow-lg hover:shadow-primary/30 transition-all duration-300"
             >
               {t('projects.viewAllProjects')}

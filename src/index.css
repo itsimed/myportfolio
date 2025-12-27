@@ -151,3 +151,135 @@ html {
     opacity: 0.45;
   }
 }
+
+/* Text-only animations for CONTACT banner */
+@keyframes letterBreathe {
+  0%, 100% { letter-spacing: 0.05em; }
+  50% { letter-spacing: 0.25em; }
+}
+
+@keyframes textGlowPulse {
+  0%, 100% { text-shadow: 0 0 0 rgba(243, 245, 32, 0), 0 0 0 rgba(89, 209, 2, 0); }
+  50% { text-shadow: 0 0 12px rgba(243, 245, 32, 0.45), 0 0 24px rgba(89, 209, 2, 0.35); }
+}
+
+/* Additional subtle, per-letter animations */
+@keyframes textWaveY {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-2px); }
+  50% { transform: translateY(1px); }
+  75% { transform: translateY(-1px); }
+}
+
+@keyframes textTiltMicro {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(0.8deg); }
+}
+
+@keyframes textScaleMicro {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+@keyframes textStrokePulse {
+  0%, 100% { text-shadow: 0 0 0 rgba(0,0,0,0.0); }
+  50% { text-shadow: 0 0 1px rgba(0,0,0,0.35), 0 0 2px rgba(0,0,0,0.25); }
+}
+
+/* Utility classes */
+.animate-letter-breathe {
+  animation: letterBreathe 4s ease-in-out infinite;
+}
+
+.animate-text-glow {
+  animation: textGlowPulse 3.5s ease-in-out infinite;
+}
+
+/* Helper to ensure animations take effect on inline text */
+.banner-word {
+  display: inline-block;
+  will-change: letter-spacing, text-shadow;
+}
+
+/* Per-letter animated class */
+.banner-letter {
+  display: inline-block;
+  will-change: transform, text-shadow;
+  animation: 
+    textWaveY 2.6s ease-in-out infinite,
+    textTiltMicro 4.2s ease-in-out infinite,
+    textScaleMicro 3.6s ease-in-out infinite,
+    textStrokePulse 5s ease-in-out infinite;
+}
+
+/* Animated separator between words */
+@keyframes sepPulse {
+  0%, 100% { transform: scaleY(1); opacity: 0.35; }
+  50% { transform: scaleY(1.35); opacity: 0.75; }
+}
+
+.banner-separator {
+  display: inline-block;
+  width: 1px;
+  height: 0.9em;
+  vertical-align: middle;
+  animation: sepPulse 2.8s ease-in-out infinite;
+}
+
+/* More visible animated dot separator */
+.banner-separator-dot {
+  display: inline-block;
+  width: 0.4em;
+  height: 0.4em;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 40% 40%, #f3f520 0%, #f3f520 45%, #59d102 100%);
+  box-shadow: 0 0 6px rgba(243, 245, 32, 0.35), 0 0 10px rgba(89, 209, 2, 0.25);
+  animation: sepPulse 2.8s ease-in-out infinite;
+}
+
+/* Rotating 4-point star separator (SVG-based) */
+@keyframes starSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.banner-separator-star {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5em;
+  height: 2.5em;
+  margin: 0 1em;
+  animation: starSpin 3s linear infinite;
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .banner-separator-star {
+    width: 4em;
+    height: 4em;
+    margin: 0 2em;
+  }
+}
+
+@media (min-width: 1024px) {
+  .banner-separator-star {
+    width: 5em;
+    height: 5em;
+    margin: 0 3em;
+  }
+}
+
+.banner-separator-star img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .banner-separator-star { animation: none; }
+  .banner-letter { animation: none; }
+  .animate-letter-breathe { animation: none; }
+  .animate-text-glow { animation: none; }
+}

@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion';
-import { useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { SiGithub, SiLinkedin, SiTelegram } from 'react-icons/si';
 import { HiOutlineMail, HiOutlineGlobeAlt } from 'react-icons/hi';
 import emailjs from '@emailjs/browser';
 
 const Contact = () => {
-  const { t } = useLanguage();
+  const { t } = useLanguage();  
   
   const [formData, setFormData] = useState({
     name: '',
@@ -126,19 +126,19 @@ const Contact = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.1,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 50, scale: 0.95 },
+    hidden: { opacity: 0, y: 30, scale: 0.97 },
     visible: { 
       opacity: 1, 
       y: 0, 
       scale: 1,
       transition: {
-        duration: 0.7,
+        duration: 0.4,
         ease: [0.16, 1, 0.3, 1] as const
       }
     },
@@ -151,43 +151,66 @@ const Contact = () => {
       <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
       
+      {/* Full-width scrolling CONTACT banner */}
+      <div className="relative z-20 w-screen left-1/2 -translate-x-1/2 bg-gradient-to-r from-secondary to-primary py-3 md:py-4 overflow-hidden mb-8 md:mb-12 lg:mb-16">
+        <motion.div
+          initial={{ x: 0 }}
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ duration: 20, ease: "linear", repeat: Infinity, repeatType: "reverse" }}
+          className="flex items-center whitespace-nowrap gap-4 md:gap-8 lg:gap-12"
+        >
+          {Array.from({ length: 18 }).map((_, i) => (
+            <React.Fragment key={`a-frag-${i}`}>
+              <span
+                className="text-2xl md:text-4xl lg:text-5xl font-extrabold tracking-widest text-background banner-word animate-letter-breathe animate-text-glow"
+              >
+                {'CONTACT'.split('').map((ch, j) => (
+                  <span
+                    key={`a-${i}-${j}`}
+                    className="banner-letter"
+                    style={{ animationDelay: `${j * 0.12}s` }}
+                  >
+                    {ch}
+                  </span>
+                ))}
+              </span>
+              <span className="banner-separator-star" aria-hidden="true">
+                <img src="/star-shuriken.svg" alt="" />
+              </span>
+            </React.Fragment>
+          ))}
+          {Array.from({ length: 18 }).map((_, i) => (
+            <React.Fragment key={`b-frag-${i}`}>
+              <span
+                className="text-2xl md:text-4xl lg:text-5xl font-extrabold tracking-widest text-background banner-word animate-letter-breathe animate-text-glow"
+              >
+                {'CONTACT'.split('').map((ch, j) => (
+                  <span
+                    key={`b-${i}-${j}`}
+                    className="banner-letter"
+                    style={{ animationDelay: `${j * 0.12}s` }}
+                  >
+                    {ch}
+                  </span>
+                ))}
+              </span>
+              <span className="banner-separator-star" aria-hidden="true">
+                <img src="/star-shuriken.svg" alt="" />
+              </span>
+            </React.Fragment>
+          ))}
+        </motion.div>
+      </div>
+      
       <div className="container mx-auto px-4 sm:px-6 relative z-10 w-full overflow-hidden">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.3 }}
           viewport={{ once: true, margin: "-120px" }}
           className="max-w-7xl mx-auto"
         >
-          {/* Header Section */}
-          <div className="text-center mb-20">
-            <motion.h2 
-              initial={{ opacity: 0, y: 60, scale: 0.9 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ 
-                duration: 0.8,
-                delay: 0.1,
-                ease: [0.34, 1.56, 0.64, 1]
-              }}
-              viewport={{ once: true }}
-              className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent mb-6"
-            >
-              {t('contact.title')}
-            </motion.h2>
-            <motion.p 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ 
-                duration: 0.7,
-                delay: 0.3,
-                ease: [0.16, 1, 0.3, 1]
-              }}
-              viewport={{ once: true }}
-              className="text-xl text-foreground/85 max-w-3xl mx-auto leading-relaxed"
-            >
-              {t('contact.subtitle')}
-            </motion.p>
-          </div>
+          {/* Removed header title; replaced by above scrolling banner */}
           
           <motion.div
             variants={containerVariants}
@@ -209,18 +232,18 @@ const Contact = () => {
                       key={index}
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      transition={{ duration: 0.3, delay: index * 0.05 }}
                       viewport={{ once: true }}
                       className="flex items-start gap-4 group"
                     >
-                      <div className={`${info.color} group-hover:scale-110 transition-transform duration-300`}>
+                      <div className={`${info.color} group-hover:scale-110 transition-transform duration-200`}>
                         {info.icon}
                       </div>
                       <div className="flex-1">
                         <h4 className="font-semibold text-foreground mb-1">{info.title}</h4>
                         <a 
                           href={info.link} 
-                          className="text-foreground/85 hover:text-primary transition-colors duration-300"
+                          className="text-foreground/85 hover:text-primary transition-colors duration-200"
                         >
                           {info.value}
                         </a>
@@ -239,11 +262,11 @@ const Contact = () => {
                         href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        initial={{ opacity: 0, scale: 0.8 }}
+                        initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.3, delay: index * 0.1 }}
+                        transition={{ duration: 0.2, delay: index * 0.05 }}
                         viewport={{ once: true }}
-                        whileHover={{ scale: 1.1, y: -2 }}
+                        whileHover={{ scale: 1.05, y: -2 }}
                         whileTap={{ scale: 0.95 }}
                         className={`px-3 sm:px-4 h-10 sm:h-12 bg-foreground/5 border border-foreground/10 rounded-xl inline-flex items-center justify-center transition-all duration-300 gap-2 ${link.color}`}
                         aria-label={`Visit my ${link.name} profile`}
