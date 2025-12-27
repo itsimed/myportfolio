@@ -121,29 +121,6 @@ const Contact = () => {
     }
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30, scale: 0.97 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      scale: 1,
-      transition: {
-        duration: 0.4,
-        ease: [0.16, 1, 0.3, 1] as const
-      }
-    },
-  };
-
   return (
     <section id="contact" className="pt-8 pb-24 bg-gradient-to-br from-background via-background/95 to-background/90 relative overflow-hidden">
       {/* Background decoration */}
@@ -240,7 +217,7 @@ const Contact = () => {
                 <div>
                   <h4 className="font-semibold text-foreground mb-4">{t('contact.social.followMe')}</h4>
                   <div className="flex gap-2 sm:gap-3 flex-wrap">
-                    {socialLinks.map((link, index) => (
+                    {socialLinks.map((link) => (
                       <a
                         key={link.name}
                         href={link.url}
