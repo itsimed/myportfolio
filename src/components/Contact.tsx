@@ -145,7 +145,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-gradient-to-br from-background via-background/95 to-background/90 relative overflow-hidden">
+    <section id="contact" className="pt-8 pb-24 bg-gradient-to-br from-background via-background/95 to-background/90 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
       <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
@@ -203,24 +203,12 @@ const Contact = () => {
       </div>
       
       <div className="container mx-auto px-4 sm:px-6 relative z-10 w-full overflow-hidden">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
-          viewport={{ once: true, margin: "-120px" }}
-          className="max-w-7xl mx-auto"
-        >
+        <div className="max-w-7xl mx-auto">
           {/* Removed header title; replaced by above scrolling banner */}
           
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid lg:grid-cols-3 gap-8 sm:gap-12"
-          >
+          <div className="grid lg:grid-cols-3 gap-8 sm:gap-12">
             {/* Contact Information */}
-            <motion.div variants={itemVariants} className="lg:col-span-1">
+            <div className="lg:col-span-1">
               <div className="bg-gradient-to-br from-white/5 to-white/[0.02] border border-foreground/10 rounded-2xl p-8 backdrop-blur-sm">
                 <h3 className="text-2xl font-bold mb-8 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                   {t('contact.getInTouch')}
@@ -228,12 +216,8 @@ const Contact = () => {
                 
                 <div className="space-y-6 mb-8">
                   {contactInfo.map((info, index) => (
-                    <motion.div
+                    <div
                       key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.3, delay: index * 0.05 }}
-                      viewport={{ once: true }}
                       className="flex items-start gap-4 group"
                     >
                       <div className={`${info.color} group-hover:scale-110 transition-transform duration-200`}>
@@ -248,7 +232,7 @@ const Contact = () => {
                           {info.value}
                         </a>
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
 
@@ -257,31 +241,25 @@ const Contact = () => {
                   <h4 className="font-semibold text-foreground mb-4">{t('contact.social.followMe')}</h4>
                   <div className="flex gap-2 sm:gap-3 flex-wrap">
                     {socialLinks.map((link, index) => (
-                      <motion.a
+                      <a
                         key={link.name}
                         href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.2, delay: index * 0.05 }}
-                        viewport={{ once: true }}
-                        whileHover={{ scale: 1.05, y: -2 }}
-                        whileTap={{ scale: 0.95 }}
                         className={`px-3 sm:px-4 h-10 sm:h-12 bg-foreground/5 border border-foreground/10 rounded-xl inline-flex items-center justify-center transition-all duration-300 gap-2 ${link.color}`}
                         aria-label={`Visit my ${link.name} profile`}
                       >
                         {link.icon}
                         <span className="text-xs sm:text-sm font-medium">{link.name}</span>
-                      </motion.a>
+                      </a>
                     ))}
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
             
             {/* Contact Form */}
-            <motion.div variants={itemVariants} className="lg:col-span-2">
+            <div className="lg:col-span-2">
               <div className="bg-gradient-to-br from-white/5 to-white/[0.02] border border-foreground/10 rounded-2xl p-8 backdrop-blur-sm">
                 <h3 className="text-2xl font-bold mb-8 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                   {t('contact.sendMessage')}
@@ -444,9 +422,9 @@ const Contact = () => {
                   )}
                 </form>
               </div>
-            </motion.div>
-          </motion.div>
-        </motion.div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

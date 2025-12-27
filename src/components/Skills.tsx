@@ -115,29 +115,10 @@ const Skills = () => {
   return (
     <section id="skills" className="py-12 sm:py-16 md:py-20 bg-background text-foreground">
       <div className="container mx-auto px-3 sm:px-4 md:px-6 w-full overflow-hidden">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ 
-            duration: 0.3,
-            ease: "easeOut"
-          }}
-          viewport={{ once: true, margin: "-80px" }}
-          className="max-w-6xl mx-auto"
-        >
-          <motion.h2 
-            initial={{ opacity: 0, y: 30, scale: 0.97 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ 
-              duration: 0.4,
-              delay: 0.05,
-              ease: [0.25, 0.46, 0.45, 0.94]
-            }}
-            viewport={{ once: true }}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 sm:mb-10 bg-gradient-primary bg-clip-text text-transparent"
-          >
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 sm:mb-10 bg-gradient-primary bg-clip-text text-transparent">
             {t('skills.title')}
-          </motion.h2>
+          </h2>
 
           {/* Mobile Tabs */}
           <motion.div 
@@ -182,13 +163,7 @@ const Skills = () => {
           {/* Desktop Sidebar + Content */}
           <div className="flex flex-col lg:flex-row gap-6 sm:gap-8">
             {/* Desktop Sidebar */}
-            <motion.aside 
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="hidden lg:block lg:w-80 w-full overflow-hidden"
-            >
+            <aside className="hidden lg:block lg:w-80 w-full overflow-hidden">
               <div className="bg-foreground/5 rounded-2xl p-5">
                 <nav className="flex flex-col gap-2" role="tablist" aria-label="Skills categories">
                   {categories.map((category, index) => (
@@ -220,73 +195,41 @@ const Skills = () => {
                   ))}
                 </nav>
               </div>
-            </motion.aside>
+            </aside>
 
             {/* Content */}
             <section className="flex-1" role="tabpanel" id={`skills-panel-${selected}`} aria-labelledby={`skills-tab-${selected}`}>
               <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-foreground/95">
                 {categories[selected].title}
               </h3>
-              <motion.div
+              <div
                 key={categories[selected].title}
-                variants={containerVariants}
-                initial="hidden"
-                animate="visible"
-                exit={{ opacity: 0, scale: 0.9 }}
                 className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6"
                 aria-live="polite"
               >
                 {categories[selected].items.map((skill) => (
-                  <motion.div
+                  <div
                     key={skill.name}
-                    variants={itemVariants}
-                    whileHover={{ 
-                      scale: 1.1,
-                      y: -10,
-                      rotateY: 5,
-                      rotateX: 5,
-                      transition: { 
-                        duration: 0.4, 
-                        ease: [0.34, 1.56, 0.64, 1]
-                      }
-                    }}
-                    whileTap={{ scale: 0.95 }}
-                    style={{ perspective: 1000 }}
                     className="bg-foreground/5 backdrop-blur-sm border border-foreground/10 rounded-xl p-3 sm:p-4 md:p-6 text-center hover:border-primary/40 hover:shadow-xl hover:shadow-primary/25 transition-shadow duration-300 cursor-pointer"
                   >
-                    <motion.div 
+                    <div 
                       className="text-foreground mb-2 sm:mb-3 flex items-center justify-center"
-                      whileHover={{ 
-                        scale: 1.2,
-                        rotate: [0, -10, 10, 0],
-                        transition: { duration: 0.5 }
-                      }}
                     >
                       {skill.icon}
-                    </motion.div>
+                    </div>
                     <h4 className="font-semibold text-sm sm:text-base">{skill.name}</h4>
-                  </motion.div>
+                  </div>
                 ))}
-              </motion.div>
+              </div>
             </section>
           </div>
           
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ 
-              duration: 0.7,
-              delay: 0.3,
-              ease: [0.16, 1, 0.3, 1]
-            }}
-            viewport={{ once: true, margin: "-50px" }}
-            className="text-center mt-12 sm:mt-16"
-          >
+          <div className="text-center mt-12 sm:mt-16">
             <p className="text-base sm:text-lg text-foreground/85 max-w-3xl mx-auto">
               {t('skills.description')}
             </p>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -7,42 +7,13 @@ const About = () => {
   return (
     <section id="about" className="py-12 sm:py-16 md:py-20 bg-background text-foreground">
       <div className="container mx-auto px-3 sm:px-4 md:px-6 w-full overflow-hidden">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ 
-            duration: 0.4,
-            ease: [0.25, 0.4, 0.25, 1]
-          }}
-          viewport={{ once: true, margin: "-100px" }}
-          className="max-w-6xl mx-auto"
-        >
-          <motion.h2 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ 
-              duration: 0.4,
-              delay: 0.1,
-              ease: [0.34, 1.56, 0.64, 1]
-            }}
-            viewport={{ once: true }}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 sm:mb-12 md:mb-16 bg-gradient-primary bg-clip-text text-transparent"
-          >
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 sm:mb-12 md:mb-16 bg-gradient-primary bg-clip-text text-transparent">
             {t('about.title')}
-          </motion.h2>
+          </h2>
           
           <div className="grid md:grid-cols-2 items-start gap-8 sm:gap-10 md:gap-12">
-            <motion.div
-              initial={{ opacity: 0, x: -40, scale: 0.9 }}
-              whileInView={{ opacity: 1, x: 0, scale: 1 }}
-              transition={{ 
-                duration: 0.5,
-                delay: 0.15,
-                ease: [0.16, 1, 0.3, 1]
-              }}
-              viewport={{ once: true, margin: "-50px" }}
-              className="relative order-2 md:order-1 hidden sm:block"
-            >
+            <div className="relative order-2 md:order-1 hidden sm:block">
               <div className="w-56 sm:w-64 md:w-80 h-56 sm:h-64 md:h-80 mx-auto relative">
                 <div className="w-full h-full bg-gradient-primary rounded-full p-1">
                   <div className="w-full h-full bg-background rounded-full flex items-center justify-center">
@@ -52,19 +23,9 @@ const About = () => {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
             
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ 
-                duration: 0.5,
-                delay: 0.2,
-                ease: [0.16, 1, 0.3, 1]
-              }}
-              viewport={{ once: true, margin: "-50px" }}
-              className="space-y-4 sm:space-y-6 order-1 md:order-2"
-            >
+            <div className="space-y-4 sm:space-y-6 order-1 md:order-2">
               <p className="text-base sm:text-lg leading-relaxed text-foreground/90 max-w-2xl">
                 {t('about.description1')}
               </p>
@@ -85,9 +46,9 @@ const About = () => {
                 <span className="px-3 sm:px-4 py-1.5 sm:py-2 bg-primary/10 text-primary rounded-full border border-primary/20 text-sm sm:text-base">{t('about.skills.projectManagement')}</span>
                 <span className="px-3 sm:px-4 py-1.5 sm:py-2 bg-secondary/10 text-secondary rounded-full border border-secondary/20 text-sm sm:text-base">{t('about.skills.inclusiveDesign')}</span>
               </div>
-            </motion.div>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
