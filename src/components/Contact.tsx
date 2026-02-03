@@ -122,66 +122,19 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="pt-8 pb-24 bg-gradient-to-br from-background via-background/95 to-background/90 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
-      <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
-      
-      {/* Full-width scrolling CONTACT banner */}
-      <div className="relative z-20 w-screen left-1/2 -translate-x-1/2 bg-gradient-to-r from-secondary to-primary py-3 md:py-4 overflow-hidden mb-8 md:mb-12 lg:mb-16">
-        <motion.div
-          initial={{ x: 0 }}
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ duration: 20, ease: "linear", repeat: Infinity, repeatType: "reverse" }}
-          className="flex items-center whitespace-nowrap gap-4 md:gap-8 lg:gap-12"
-        >
-          {Array.from({ length: 18 }).map((_, i) => (
-            <React.Fragment key={`a-frag-${i}`}>
-              <span
-                className="text-2xl md:text-4xl lg:text-5xl font-extrabold tracking-widest text-background banner-word animate-letter-breathe animate-text-glow"
-              >
-                {'CONTACT'.split('').map((ch, j) => (
-                  <span
-                    key={`a-${i}-${j}`}
-                    className="banner-letter"
-                    style={{ animationDelay: `${j * 0.12}s` }}
-                  >
-                    {ch}
-                  </span>
-                ))}
-              </span>
-              <span className="banner-separator-star" aria-hidden="true">
-                <img src="/star-shuriken.svg" alt="" />
-              </span>
-            </React.Fragment>
-          ))}
-          {Array.from({ length: 18 }).map((_, i) => (
-            <React.Fragment key={`b-frag-${i}`}>
-              <span
-                className="text-2xl md:text-4xl lg:text-5xl font-extrabold tracking-widest text-background banner-word animate-letter-breathe animate-text-glow"
-              >
-                {'CONTACT'.split('').map((ch, j) => (
-                  <span
-                    key={`b-${i}-${j}`}
-                    className="banner-letter"
-                    style={{ animationDelay: `${j * 0.12}s` }}
-                  >
-                    {ch}
-                  </span>
-                ))}
-              </span>
-              <span className="banner-separator-star" aria-hidden="true">
-                <img src="/star-shuriken.svg" alt="" />
-              </span>
-            </React.Fragment>
-          ))}
-        </motion.div>
-      </div>
-      
-      <div className="container mx-auto px-4 sm:px-6 relative z-10 w-full overflow-hidden">
+    <section id="contact" className="py-12 sm:py-16 md:py-20 bg-background text-foreground">
+      <div className="container mx-auto px-4 sm:px-6 w-full overflow-hidden">
         <div className="max-w-7xl mx-auto">
-          {/* Removed header title; replaced by above scrolling banner */}
+          {/* Simple header title */}
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 sm:mb-12 md:mb-16 bg-gradient-primary bg-clip-text text-transparent"
+          >
+            {t('contact.title')}
+          </motion.h2>
           
           <div className="grid lg:grid-cols-3 gap-8 sm:gap-12">
             {/* Contact Information */}
