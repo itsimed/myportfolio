@@ -22,7 +22,7 @@ const Projects = () => {
         </div>
 
         <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {portfolioProjects.map(({ id, image, demoUrl, githubUrl, technologies }, index) => (
+          {portfolioProjects.map(({ id, image, demoUrl, githubUrl, technologies, caseStudyPath }, index) => (
             <article key={id} className="flex flex-col overflow-hidden rounded-sm border border-border bg-surface">
               <div className="aspect-[16/10] overflow-hidden bg-border">
                 <img
@@ -34,7 +34,11 @@ const Projects = () => {
                 />
               </div>
               <div className="flex flex-1 flex-col p-5">
-                <h3 className="text-xl font-semibold">{t(`projects.projects.${id}.title`)}</h3>
+                <h3 className="text-xl font-semibold">
+                  {caseStudyPath
+                    ? <a className="underline decoration-border underline-offset-4 hover:text-primary" href={caseStudyPath}>{t(`projects.projects.${id}.title`)}</a>
+                    : t(`projects.projects.${id}.title`)}
+                </h3>
                 <p className="mt-2 flex-1 leading-relaxed text-muted">{t(`projects.projects.${id}.description`)}</p>
                 <ul className="mt-4 flex flex-wrap gap-2" aria-label={t('portfolio.projects.technologies')}>
                   {technologies.map((technology) => (
@@ -44,6 +48,11 @@ const Projects = () => {
                   ))}
                 </ul>
                 <div className="mt-6 flex gap-4 border-t border-border pt-4 text-sm font-semibold">
+                  {caseStudyPath && (
+                    <a className="min-h-11 py-2 text-primary underline underline-offset-4 hover:text-foreground" href={caseStudyPath}>
+                      {t('portfolio.projects.readCaseStudy')}
+                    </a>
+                  )}
                   <a className="min-h-11 py-2 text-primary underline underline-offset-4 hover:text-foreground" href={demoUrl} target="_blank" rel="noreferrer">
                     {t(`projects.projects.${id}.button`)}
                   </a>

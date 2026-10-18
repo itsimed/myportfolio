@@ -4,6 +4,7 @@ export interface PortfolioProject {
   demoUrl: string;
   githubUrl?: string;
   technologies: string[];
+  caseStudyPath?: string;
 }
 
 export const portfolioProjects: PortfolioProject[] = [
@@ -13,6 +14,7 @@ export const portfolioProjects: PortfolioProject[] = [
     demoUrl: 'https://imgur.com/a/wassalni-app-B01sowE',
     githubUrl: 'https://github.com/itsimed/wassalni',
     technologies: ['React Native', 'TypeScript', 'Node.js', 'MongoDB', 'Firebase'],
+    caseStudyPath: '/projects/wassalni/',
   },
   {
     id: 'divanhane',
@@ -20,6 +22,7 @@ export const portfolioProjects: PortfolioProject[] = [
     demoUrl: 'https://divanhane.vercel.app',
     githubUrl: 'https://github.com/itsimed/divanhane',
     technologies: ['Next.js', 'TypeScript', 'Tailwind CSS'],
+    caseStudyPath: '/projects/divanhane/',
   },
   {
     id: 'bdtech',
@@ -48,5 +51,6 @@ export const portfolioProjects: PortfolioProject[] = [
     demoUrl: 'https://picci-five.vercel.app/',
     githubUrl: 'https://github.com/itsimed/picci',
     technologies: ['React', 'TypeScript', 'Tailwind CSS'],
+    caseStudyPath: '/projects/picci/',
   },
 ];

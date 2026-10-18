@@ -12,6 +12,7 @@ const navigationItems = [
 const Navbar = () => {
   const { language, setLanguage, t } = useLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
+  const isHomePage = window.location.pathname === '/';
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -28,7 +29,7 @@ const Navbar = () => {
   const renderLinks = () => navigationItems.map(({ key, href }) => (
     <a
       key={href}
-      href={href}
+      href={isHomePage ? href : `/${href}`}
       onClick={closeMenu}
       className="block rounded-sm px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-primary"
     >
@@ -39,7 +40,7 @@ const Navbar = () => {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur">
       <div className="mx-auto flex min-h-16 max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
-        <a href="#hero" className="flex shrink-0 items-center gap-3 rounded-sm" onClick={closeMenu}>
+        <a href={isHomePage ? '#hero' : '/'} className="flex shrink-0 items-center gap-3 rounded-sm" onClick={closeMenu}>
           <img src="/logo.webp" alt="" className="h-9 w-9 rounded-full object-cover" />
           <span className="text-sm font-semibold tracking-tight sm:text-base">
             Imed Eddine Belouettar

@@ -1,28 +1,20 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { resolve } from 'node:path';
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: './',
+  base: '/',
   build: {
-    target: 'es2015',
-    modulePreload: false,
     rollupOptions: {
-      output: {
-        format: 'iife',
-        entryFileNames: 'assets/[name]-[hash].js',
-        chunkFileNames: 'assets/[name]-[hash].js',
-        assetFileNames: 'assets/[name]-[hash].[ext]',
-        inlineDynamicImports: true,
-        manualChunks: undefined,
-        globals: {
-          'react': 'React',
-          'react-dom': 'ReactDOM'
-        }
-      }
+      input: {
+        home: resolve(process.cwd(), 'index.html'),
+        accessibility: resolve(process.cwd(), 'accessibility/index.html'),
+        notFound: resolve(process.cwd(), '404.html'),
+        wassalni: resolve(process.cwd(), 'projects/wassalni/index.html'),
+        divanhane: resolve(process.cwd(), 'projects/divanhane/index.html'),
+        picci: resolve(process.cwd(), 'projects/picci/index.html'),
+      },
     },
-    minify: false,
-    sourcemap: false
-  }
-})
+  },
+});
