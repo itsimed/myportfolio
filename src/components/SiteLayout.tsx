@@ -9,12 +9,12 @@ interface SiteLayoutProps {
 }
 
 const SiteLayout = ({ children, isHome }: SiteLayoutProps) => {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       <a href="#main-content" className="skip-link">
-        {language === 'fr' ? 'Aller au contenu principal' : 'Skip to main content'}
+        {t('portfolio.navigation.skipToContent')}
       </a>
       <Navbar />
       <main id="main-content" tabIndex={-1}>{children}</main>
@@ -25,9 +25,9 @@ const SiteLayout = ({ children, isHome }: SiteLayoutProps) => {
             {' '}
             {language === 'fr' ? 'Tous droits réservés.' : 'All rights reserved.'}
           </p>
-          <nav aria-label={language === 'fr' ? 'Liens de pied de page' : 'Footer links'}>
+          <nav aria-label={t('portfolio.navigation.footer')}>
             <a className="underline underline-offset-4 hover:text-primary" href="/accessibility/">
-              {language === 'fr' ? 'Déclaration d’accessibilité' : 'Accessibility statement'}
+              {t('portfolio.accessibility.title')}
             </a>
           </nav>
         </div>

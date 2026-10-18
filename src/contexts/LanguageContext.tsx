@@ -1,12 +1,14 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
-import { translations } from '../translations';
+import { translations, type Language } from '../translations';
 
-type Language = 'fr' | 'en';
+type TranslationTree = {
+  [key: string]: string | TranslationTree;
+};
 
 interface LanguageContextType {
   language: Language;
-  setLanguage: (lang: Language) => void;
+  setLanguage: (language: Language) => void;
   t: (key: string) => string;
 }
 
@@ -14,7 +16,7 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export const useLanguage = () => {
   const context = useContext(LanguageContext);
-  if (context === undefined) {
+  if (!context) {
     throw new Error('useLanguage must be used within a LanguageProvider');
   }
   return context;
@@ -24,48 +26,58 @@ interface LanguageProviderProps {
   children: ReactNode;
 }
 
-export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('fr');
+const getInitialLanguage = (): Language => {
+  try {
+    return localStorage.getItem('language') === 'en' ? 'en' : 'fr';
+  } catch (error) {
+    console.warn('Unable to read the saved language preference.', error);
+    return 'fr';
+  }
+};
 
-  // Fonction de traduction
-  const t = (key: string): string => {
-    const keys = key.split('.');
-    let value: any = translations[language];
-    
-    for (const k of keys) {
-      if (value && typeof value === 'object' && k in value) {
-        value = value[k];
-      } else {
-        return key; // Retourne la clé si la traduction n'est pas trouvée
+export const LanguageProvider = ({ children }: LanguageProviderProps) => {
+  const [language, setCurrentLanguage] = useState<Language>(getInitialLanguage);
+
+  const t = useCallback((key: string): string => {
+    const path = key.split('.');
+    let value: string | TranslationTree = translations[language];
+
+    for (const part of path) {
+      if (typeof value === 'string' || !Object.prototype.hasOwnProperty.call(value, part)) {
+        console.error(`Missing ${language} translation: ${key}`);
+        return key;
       }
+      value = value[part];
     }
-    
-    return typeof value === 'string' ? value : key;
-  };
 
-  // Sauvegarder la langue dans localStorage
-  useEffect(() => {
-    const savedLanguage = localStorage.getItem('language') as Language;
-    if (savedLanguage && (savedLanguage === 'fr' || savedLanguage === 'en')) {
-      setLanguage(savedLanguage);
+    if (typeof value !== 'string') {
+      console.error(`Translation is not a string: ${key}`);
+      return key;
+    }
+    return value;
+  }, [language]);
+
+  const setLanguage = useCallback((nextLanguage: Language) => {
+    setCurrentLanguage(nextLanguage);
+    try {
+      localStorage.setItem('language', nextLanguage);
+    } catch (error) {
+      console.warn('Unable to save the language preference.', error);
     }
   }, []);
 
-  const handleSetLanguage = (lang: Language) => {
-    setLanguage(lang);
-    localStorage.setItem('language', lang);
-  };
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
 
-  const value: LanguageContextType = {
-    language,
-    setLanguage: handleSetLanguage,
-    t,
-  };
+  const contextValue = useMemo(
+    () => ({ language, setLanguage, t }),
+    [language, setLanguage, t],
+  );
 
   return (
-    <LanguageContext.Provider value={value}>
+    <LanguageContext.Provider value={contextValue}>
       {children}
     </LanguageContext.Provider>
   );
 };
-

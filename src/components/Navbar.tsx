@@ -47,12 +47,12 @@ const Navbar = () => {
           </span>
         </a>
 
-        <nav aria-label={language === 'fr' ? 'Navigation principale' : 'Primary navigation'} className="hidden items-center gap-1 lg:flex">
+        <nav aria-label={t('portfolio.navigation.primary')} className="hidden items-center gap-1 lg:flex">
           {renderLinks()}
         </nav>
 
         <div className="flex items-center gap-2">
-          <div role="group" className="flex items-center gap-1" aria-label={language === 'fr' ? 'Langue' : 'Language'}>
+          <div role="group" className="flex items-center gap-1" aria-label={t('portfolio.navigation.language')}>
             <button
               type="button"
               onClick={() => setLanguage('fr')}
@@ -77,9 +77,7 @@ const Navbar = () => {
             className="grid size-11 place-items-center rounded-sm border border-control-border lg:hidden"
             aria-expanded={menuOpen}
             aria-controls="mobile-navigation"
-            aria-label={menuOpen
-              ? (language === 'fr' ? 'Fermer le menu' : 'Close menu')
-              : (language === 'fr' ? 'Ouvrir le menu' : 'Open menu')}
+            aria-label={menuOpen ? t('portfolio.navigation.closeMenu') : t('portfolio.navigation.openMenu')}
             onClick={() => setMenuOpen((open) => !open)}
           >
             <span aria-hidden="true" className="text-xl leading-none">{menuOpen ? '×' : '☰'}</span>
@@ -89,7 +87,7 @@ const Navbar = () => {
 
       <nav
         id="mobile-navigation"
-        aria-label={language === 'fr' ? 'Navigation principale' : 'Primary navigation'}
+        aria-label={t('portfolio.navigation.primary')}
         hidden={!menuOpen}
         className="border-t border-border bg-background px-5 py-3 lg:hidden"
       >

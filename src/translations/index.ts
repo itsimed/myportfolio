@@ -216,6 +216,23 @@ export const translations = {
         contactTitle: 'Signaler un problème',
         contact: 'Si une partie du site vous est difficile à utiliser, contactez-moi à l’adresse',
       },
+      navigation: {
+        skipToContent: 'Aller au contenu principal',
+        primary: 'Navigation principale',
+        language: 'Langue',
+        openMenu: 'Ouvrir le menu',
+        closeMenu: 'Fermer le menu',
+        footer: 'Liens de pied de page',
+        scrollToTop: 'Retour en haut de la page',
+      },
+      metadata: {
+        homeTitle: 'Imed Eddine Belouettar — Portfolio',
+        homeDescription: 'Portfolio d’Imed Eddine Belouettar, designer UI/UX et développeur front-end.',
+        caseStudySuffix: 'Étude de cas — Imed Eddine Belouettar',
+        accessibilityDescription: 'Déclaration d’accessibilité du portfolio d’Imed Eddine Belouettar.',
+        notFoundTitle: 'Page introuvable — Imed Eddine Belouettar',
+        notFoundDescription: 'La page demandée est introuvable dans le portfolio.',
+      },
     },
 
     // Common
@@ -442,6 +459,23 @@ export const translations = {
         },
         contactTitle: 'Report an issue',
         contact: 'If any part of this site is difficult to use, please contact me at',
+      },
+      navigation: {
+        skipToContent: 'Skip to main content',
+        primary: 'Primary navigation',
+        language: 'Language',
+        openMenu: 'Open menu',
+        closeMenu: 'Close menu',
+        footer: 'Footer links',
+        scrollToTop: 'Back to top',
+      },
+      metadata: {
+        homeTitle: 'Imed Eddine Belouettar — Portfolio',
+        homeDescription: 'Portfolio of Imed Eddine Belouettar, UI/UX designer and front-end developer.',
+        caseStudySuffix: 'Case study — Imed Eddine Belouettar',
+        accessibilityDescription: 'Accessibility statement for Imed Eddine Belouettar’s portfolio.',
+        notFoundTitle: 'Page not found — Imed Eddine Belouettar',
+        notFoundDescription: 'The requested page could not be found in the portfolio.',
       },
     },
 
