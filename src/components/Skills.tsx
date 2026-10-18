@@ -1,206 +1,52 @@
-import { motion } from 'framer-motion';
-import { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
-import {
-  SiFigma,
-  SiCanva,
-  SiHtml5,
-  SiCss3,
-  SiSass,
-  SiJavascript,
-  SiReact,
-  SiNextdotjs,
-  SiExpo,
-  SiVite,
-  SiTypescript,
-  SiPython,
-  SiPandas,
-  SiNumpy,
-  SiScikitlearn,
-  SiJira,
-  SiGit,
-  SiGithub,
-} from 'react-icons/si'
-import { MdDevices, MdStorage, MdGroups } from 'react-icons/md'
-import { TbVectorBezier, TbChartHistogram, TbFilterCog } from 'react-icons/tb'
+
+const skillGroups = [
+  {
+    id: 'design',
+    title: 'skills.categories.design',
+    skills: ['Figma', 'Wireframing & prototyping', 'Canva', 'Inclusive design'],
+  },
+  {
+    id: 'frontend',
+    title: 'skills.categories.frontend',
+    skills: ['HTML', 'CSS / Sass', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Responsive design'],
+  },
+  {
+    id: 'data',
+    title: 'skills.categories.data',
+    skills: ['Python', 'Pandas', 'NumPy', 'Data visualization', 'Machine learning fundamentals', 'Database design'],
+  },
+  {
+    id: 'management',
+    title: 'skills.categories.management',
+    skills: ['Agile / Scrum', 'Jira', 'Git & GitHub', 'Team collaboration'],
+  },
+];
 
 const Skills = () => {
   const { t } = useLanguage();
-  
-  const categories = [
-    {
-      title: t('skills.categories.design'),
-      items: [
-        { name: 'Figma', icon: <SiFigma className="w-8 h-8 sm:w-10 sm:h-10" /> },
-        { name: 'Wireframing & Prototyping', icon: <TbVectorBezier className="w-8 h-8 sm:w-10 sm:h-10" /> },
-        { name: 'Canva', icon: <SiCanva className="w-8 h-8 sm:w-10 sm:h-10" /> },
-      ],
-    },
-    {
-      title: t('skills.categories.frontend'),
-      items: [
-        { name: 'HTML5', icon: <SiHtml5 className="w-8 h-8 sm:w-10 sm:h-10" /> },
-        { name: 'CSS3 / SCSS', icon: (
-          <span className="flex gap-1 sm:gap-2">
-            <SiCss3 className="w-8 h-8 sm:w-10 sm:h-10" />
-            <SiSass className="w-8 h-8 sm:w-10 sm:h-10" />
-          </span>
-        ) },
-        { name: 'JavaScript', icon: <SiJavascript className="w-8 h-8 sm:w-10 sm:h-10" /> },
-        { name: 'React.js', icon: <SiReact className="w-8 h-8 sm:w-10 sm:h-10" /> },
-        { name: 'Next.js', icon: <SiNextdotjs className="w-8 h-8 sm:w-10 sm:h-10" /> },
-        { name: 'Expo', icon: <SiExpo className="w-8 h-8 sm:w-10 sm:h-10" /> },
-        { name: 'Vite', icon: <SiVite className="w-8 h-8 sm:w-10 sm:h-10" /> },
-        { name: 'TypeScript', icon: <SiTypescript className="w-8 h-8 sm:w-10 sm:h-10" /> },
-        { name: 'Responsive Web Design', icon: <MdDevices className="w-8 h-8 sm:w-10 sm:h-10" /> },
-      ],
-    },
-    {
-      title: t('skills.categories.data'),
-      items: [
-        { name: 'Python', icon: <SiPython className="w-8 h-8 sm:w-10 sm:h-10" /> },
-        { name: 'Pandas', icon: <SiPandas className="w-8 h-8 sm:w-10 sm:h-10" /> },
-        { name: 'NumPy', icon: <SiNumpy className="w-8 h-8 sm:w-10 sm:h-10" /> },
-        { name: 'Data Visualization (Matplotlib)', icon: <TbChartHistogram className="w-8 h-8 sm:w-10 sm:h-10" /> },
-        { name: 'Basic Machine Learning', icon: <SiScikitlearn className="w-8 h-8 sm:w-10 sm:h-10" /> },
-        { name: 'Data Cleaning & Processing', icon: <TbFilterCog className="w-8 h-8 sm:w-10 sm:h-10" /> },
-        { name: 'Database Design', icon: <MdStorage className="w-8 h-8 sm:w-10 sm:h-10" /> },
-      ],
-    },
-    {
-      title: t('skills.categories.management'),
-      items: [
-        { name: 'Agile / Scrum', icon: <SiJira className="w-8 h-8 sm:w-10 sm:h-10" /> },
-        { name: 'Git & GitHub', icon: (
-          <span className="flex gap-1 sm:gap-2">
-            <SiGit className="w-8 h-8 sm:w-10 sm:h-10" />
-            <SiGithub className="w-8 h-8 sm:w-10 sm:h-10" />
-          </span>
-        ) },
-        { name: 'Communication & Collaboration', icon: <MdGroups className="w-8 h-8 sm:w-10 sm:h-10" /> },
-      ],
-    },
-  ] as const;
-
-  const [selected, setSelected] = useState<number>(0);
 
   return (
-    <section id="skills" className="py-12 sm:py-16 md:py-20 bg-background text-foreground">
-      <div className="container mx-auto px-3 sm:px-4 md:px-6 w-full overflow-hidden">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 sm:mb-10 bg-gradient-primary bg-clip-text text-transparent">
-            {t('skills.title')}
-          </h2>
-
-          {/* Mobile Tabs */}
-          <motion.div 
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.1 }}
-            viewport={{ once: true }}
-            className="lg:hidden mb-8"
-          >
-            <div className="bg-foreground/5 rounded-2xl p-2" role="tablist" aria-label="Skills categories">
-              <div className="flex gap-1">
-                {categories.map((category, index) => (
-                  <motion.button
-                    key={category.title}
-                    id={`skills-tab-${index}`}
-                    role="tab"
-                    aria-selected={selected === index}
-                    aria-controls={`skills-panel-${index}`}
-                    onClick={() => setSelected(index)}
-                    whileTap={{ scale: 0.95 }}
-                    className={`flex-1 px-3 py-3 rounded-xl transition-all duration-200 text-xs font-medium ${
-                      selected === index
-                        ? 'bg-primary text-white shadow-sm'
-                        : 'text-foreground/90 hover:text-foreground hover:bg-foreground/10'
-                    }`}
-                  >
-                    {selected === index && (
-                      <motion.div
-                        layoutId="mobileTabIndicator"
-                        className="absolute inset-0 bg-primary rounded-xl -z-10"
-                        initial={false}
-                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                      />
-                    )}
-                    <span className="relative z-10">{category.title.split(' ')[0]}</span>
-                  </motion.button>
+    <section id="skills" aria-labelledby="skills-title" className="bg-surface px-5 py-20 sm:px-8 sm:py-28">
+      <div className="mx-auto max-w-6xl">
+        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+          {t('portfolio.skills.eyebrow')}
+        </p>
+        <h2 id="skills-title" className="mt-4 max-w-2xl text-4xl font-semibold tracking-tight sm:text-5xl">
+          {t('skills.title')}
+        </h2>
+        <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">{t('skills.description')}</p>
+        <div className="mt-12 grid gap-x-10 md:grid-cols-2">
+          {skillGroups.map(({ id, title, skills }) => (
+            <section key={id} aria-labelledby={`skill-group-${id}`} className="border-t border-border py-6">
+              <h3 id={`skill-group-${id}`} className="text-lg font-semibold">{t(title)}</h3>
+              <ul className="mt-4 flex flex-wrap gap-2">
+                {skills.map((skill) => (
+                  <li key={skill} className="rounded-sm bg-background px-3 py-2 text-sm text-muted">{skill}</li>
                 ))}
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Desktop Sidebar + Content */}
-          <div className="flex flex-col lg:flex-row gap-6 sm:gap-8">
-            {/* Desktop Sidebar */}
-            <aside className="hidden lg:block lg:w-80 w-full overflow-hidden">
-              <div className="bg-foreground/5 rounded-2xl p-5">
-                <nav className="flex flex-col gap-2" role="tablist" aria-label="Skills categories">
-                  {categories.map((category, index) => (
-                    <motion.button
-                      key={category.title}
-                      id={`skills-tab-${index}`}
-                      role="tab"
-                      aria-selected={selected === index}
-                      aria-controls={`skills-panel-${index}`}
-                      onClick={() => setSelected(index)}
-                      whileHover={{ x: 5, scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className={`relative whitespace-nowrap px-4 py-2.5 rounded-xl transition-all duration-200 text-sm font-medium ${
-                        selected === index
-                          ? 'text-primary'
-                          : 'hover:bg-foreground/10 text-foreground/90'
-                      }`}
-                    >
-                      {selected === index && (
-                        <motion.div
-                          layoutId="desktopTabIndicator"
-                          className="absolute inset-0 bg-primary/10 rounded-xl shadow-sm"
-                          initial={false}
-                          transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                        />
-                      )}
-                      <span className="relative z-10">{category.title}</span>
-                    </motion.button>
-                  ))}
-                </nav>
-              </div>
-            </aside>
-
-            {/* Content */}
-            <section className="flex-1" role="tabpanel" id={`skills-panel-${selected}`} aria-labelledby={`skills-tab-${selected}`}>
-              <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-foreground/95">
-                {categories[selected].title}
-              </h3>
-              <div
-                key={categories[selected].title}
-                className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6"
-                aria-live="polite"
-              >
-                {categories[selected].items.map((skill) => (
-                  <div
-                    key={skill.name}
-                    className="bg-foreground/5 backdrop-blur-sm border border-foreground/10 rounded-xl p-3 sm:p-4 md:p-6 text-center hover:border-primary/40 hover:shadow-xl hover:shadow-primary/25 transition-shadow duration-300 cursor-pointer"
-                  >
-                    <div 
-                      className="text-foreground mb-2 sm:mb-3 flex items-center justify-center"
-                    >
-                      {skill.icon}
-                    </div>
-                    <h4 className="font-semibold text-sm sm:text-base">{skill.name}</h4>
-                  </div>
-                ))}
-              </div>
+              </ul>
             </section>
-          </div>
-          
-          <div className="text-center mt-12 sm:mt-16">
-            <p className="text-base sm:text-lg text-foreground/85 max-w-3xl mx-auto">
-              {t('skills.description')}
-            </p>
-          </div>
+          ))}
         </div>
       </div>
     </section>

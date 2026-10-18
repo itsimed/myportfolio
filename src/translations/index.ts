@@ -157,6 +157,34 @@ export const translations = {
       madeWith: 'Fait avec ❤️ en utilisant Vite, React & TailwindCSS',
     },
 
+    portfolio: {
+      hero: {
+        portraitAlt: 'Portrait de Imed Eddine Belouettar',
+        location: 'Paris, France · Ouvert aux opportunités',
+        scrollHint: 'Faites défiler pour découvrir mon travail',
+      },
+      about: {
+        eyebrow: 'Profil',
+        focusLabel: 'Domaines de travail',
+      },
+      skills: {
+        eyebrow: 'Expertise',
+      },
+      projects: {
+        eyebrow: 'Sélection',
+        technologies: 'Technologies utilisées',
+        wassalni: { imageAlt: 'Aperçu de l’application Wassalni' },
+        divanhane: { imageAlt: 'Aperçu du site Divan Hane' },
+        bdtech: { imageAlt: 'Aperçu du site BDTech' },
+        cabinetcm: { imageAlt: 'Aperçu du site CabinetCM' },
+        elitepartners: { imageAlt: 'Aperçu du site Elite Partners Group' },
+        picci: { imageAlt: 'Aperçu du site Picci' },
+      },
+      contact: {
+        eyebrow: 'Échangeons',
+      },
+    },
+
     // Common
     common: {
       loading: 'Chargement...',
@@ -323,6 +351,34 @@ export const translations = {
       madeWith: 'Made with ❤️ using Vite, React & TailwindCSS',
     },
 
+    portfolio: {
+      hero: {
+        portraitAlt: 'Portrait of Imed Eddine Belouettar',
+        location: 'Paris, France · Open to opportunities',
+        scrollHint: 'Scroll to discover my work',
+      },
+      about: {
+        eyebrow: 'Profile',
+        focusLabel: 'Areas of focus',
+      },
+      skills: {
+        eyebrow: 'Expertise',
+      },
+      projects: {
+        eyebrow: 'Selected work',
+        technologies: 'Technologies used',
+        wassalni: { imageAlt: 'Preview of the Wassalni app' },
+        divanhane: { imageAlt: 'Preview of the Divan Hane website' },
+        bdtech: { imageAlt: 'Preview of the BDTech website' },
+        cabinetcm: { imageAlt: 'Preview of the CabinetCM website' },
+        elitepartners: { imageAlt: 'Preview of the Elite Partners Group website' },
+        picci: { imageAlt: 'Preview of the Picci website' },
+      },
+      contact: {
+        eyebrow: 'Get in touch',
+      },
+    },
+
     // Common
     common: {
       loading: 'Loading...',
@@ -334,4 +390,3 @@ export const translations = {
 
 export type Language = 'fr' | 'en';
 export type TranslationKey = keyof typeof translations.fr;
-

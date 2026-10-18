@@ -3,50 +3,37 @@ import { useLanguage } from '../contexts/LanguageContext';
 const About = () => {
   const { t } = useLanguage();
 
+  const focusAreas = [
+    'about.skills.uiux',
+    'about.skills.frontend',
+    'about.skills.accessibility',
+    'about.skills.userResearch',
+    'about.skills.projectManagement',
+    'about.skills.inclusiveDesign',
+  ];
+
   return (
-    <section id="about" className="py-12 sm:py-16 md:py-20 bg-background text-foreground">
-      <div className="container mx-auto px-3 sm:px-4 md:px-6 w-full overflow-hidden">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 sm:mb-12 md:mb-16 bg-gradient-primary bg-clip-text text-transparent">
+    <section id="about" aria-labelledby="about-title" className="px-5 py-20 sm:px-8 sm:py-28">
+      <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[0.7fr_1.3fr] md:gap-20">
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+            {t('portfolio.about.eyebrow')}
+          </p>
+          <h2 id="about-title" className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
             {t('about.title')}
           </h2>
-          
-          <div className="grid md:grid-cols-2 items-start gap-8 sm:gap-10 md:gap-12">
-            <div className="relative order-2 md:order-1 hidden sm:block">
-              <div className="w-56 sm:w-64 md:w-80 h-56 sm:h-64 md:h-80 mx-auto relative">
-                <div className="w-full h-full bg-gradient-primary rounded-full p-1">
-                  <div className="w-full h-full bg-background rounded-full flex items-center justify-center">
-                    <div className="w-48 sm:w-56 md:w-72 h-48 sm:h-56 md:h-72 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full flex items-center justify-center">
-                      <img src="https://storage.googleapis.com/publicasse/my_portfolio/Belouettar%20Imed%20Eddine.webp" alt="Photo de profil de Imed Eddine Belouettar" className="w-full h-full object-cover rounded-full" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="space-y-4 sm:space-y-6 order-1 md:order-2">
-              <p className="text-base sm:text-lg leading-relaxed text-foreground/90 max-w-2xl">
-                {t('about.description1')}
-              </p>
-
-              <p className="text-base sm:text-lg leading-relaxed text-foreground/90 max-w-2xl">
-                {t('about.description2')}
-              </p>
-              
-              <p className="text-base sm:text-lg leading-relaxed text-foreground/90 max-w-2xl">
-                {t('about.description3')}
-              </p>
-              
-              <div className="flex flex-wrap gap-2 sm:gap-3 mt-6 sm:mt-8">
-                <span className="px-3 sm:px-4 py-1.5 sm:py-2 bg-primary/10 text-primary rounded-full border border-primary/20 text-sm sm:text-base">{t('about.skills.uiux')}</span>
-                <span className="px-3 sm:px-4 py-1.5 sm:py-2 bg-secondary/10 text-secondary rounded-full border border-secondary/20 text-sm sm:text-base">{t('about.skills.frontend')}</span>
-                <span className="px-3 sm:px-4 py-1.5 sm:py-2 bg-accent/10 text-accent rounded-full border border-accent/20 text-sm sm:text-base">{t('about.skills.accessibility')}</span>
-                <span className="px-3 sm:px-4 py-1.5 sm:py-2 bg-foreground/10 text-foreground rounded-full border border-foreground/20 text-sm sm:text-base">{t('about.skills.userResearch')}</span>
-                <span className="px-3 sm:px-4 py-1.5 sm:py-2 bg-primary/10 text-primary rounded-full border border-primary/20 text-sm sm:text-base">{t('about.skills.projectManagement')}</span>
-                <span className="px-3 sm:px-4 py-1.5 sm:py-2 bg-secondary/10 text-secondary rounded-full border border-secondary/20 text-sm sm:text-base">{t('about.skills.inclusiveDesign')}</span>
-              </div>
-            </div>
-          </div>
+        </div>
+        <div className="space-y-5 text-lg leading-relaxed text-muted">
+          <p>{t('about.description1')}</p>
+          <p>{t('about.description2')}</p>
+          <p>{t('about.description3')}</p>
+          <ul className="flex flex-wrap gap-2 pt-3" aria-label={t('portfolio.about.focusLabel')}>
+            {focusAreas.map((area) => (
+              <li key={area} className="rounded-sm border border-border bg-surface px-3 py-2 text-sm font-medium text-foreground">
+                {t(area)}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

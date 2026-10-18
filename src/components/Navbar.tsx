@@ -51,7 +51,7 @@ const Navbar = () => {
         </nav>
 
         <div className="flex items-center gap-2">
-          <div className="flex items-center gap-1" aria-label={language === 'fr' ? 'Langue' : 'Language'}>
+          <div role="group" className="flex items-center gap-1" aria-label={language === 'fr' ? 'Langue' : 'Language'}>
             <button
               type="button"
               onClick={() => setLanguage('fr')}

@@ -1,166 +1,63 @@
-import { motion } from 'framer-motion';
+import { portfolioProjects } from '../data/projects';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const Projects = () => {
   const { t } = useLanguage();
 
-  const projects = [
-    {
-      id: 1,
-      title: 'wassalni',
-      technologies: ['React Native', 'TypeScript', 'Node.js', 'MongoDB', 'Firebase'],
-      liveDemo: 'https://imgur.com/a/wassalni-app-B01sowE',
-      github: 'https://github.com/itsimed/wassalni',
-      image: 'https://storage.googleapis.com/publicasse/my_portfolio/wass.webp',
-    },
-    {
-      id: 2,
-      title: 'divanhane',
-      technologies: ['Next.js', 'TypeScript', 'TailwindCSS'],
-      liveDemo: 'https://divanhane.vercel.app',
-      github: 'https://github.com/itsimed/divanhane',
-      image: 'https://storage.googleapis.com/publicasse/my_portfolio/divan.webp',
-    },
-    {
-      id: 3,
-      title: 'bdtech',
-      technologies: ['Next.js', 'TypeScript', 'TailwindCSS'],
-      liveDemo: 'https://bdtech-azure.vercel.app/',
-      github: 'https://github.com/itsimed/bdtech',
-      image: 'https://storage.googleapis.com/publicasse/my_portfolio/bd.webp',
-    },
-    {
-      id: 4,
-      title: 'cabinetcm',
-      liveDemo: 'https://cabinetcm.vercel.app/',
-      github: 'https://github.com/itsimed/cabinetcm',
-      image: 'https://storage.googleapis.com/publicasse/my_portfolio/cm.webp',
-    },
-    {
-      id: 5,
-      title: 'elitepartners',
-      liveDemo: 'https://elitepartnersgroup.vercel.app/',
-      github: 'https://github.com/itsimed/elitepartnersgroup',
-      image: 'https://storage.googleapis.com/publicasse/my_portfolio/epg.webp',
-    },
-    {
-      id: 6,
-      title: 'picci',
-      liveDemo: 'https://picci-five.vercel.app/',
-      github: 'https://github.com/itsimed/picci',
-      image: 'https://storage.googleapis.com/publicasse/my_portfolio/picci.webp',
-    },
-  ];
-
-
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0 },
-  };
-
   return (
-    <section id="projects" className="py-20 bg-background text-foreground">
-      <div className="container mx-auto px-4 sm:px-6 w-full overflow-hidden">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex items-end justify-between mb-10">
-            <h2 
-              className="text-4xl md:text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent"
-            >
+    <section id="projects" aria-labelledby="projects-title" className="px-5 py-20 sm:px-8 sm:py-28">
+      <div className="mx-auto max-w-6xl">
+        <div className="flex flex-wrap items-end justify-between gap-5">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+              {t('portfolio.projects.eyebrow')}
+            </p>
+            <h2 id="projects-title" className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
               {t('projects.title')}
             </h2>
-            <a
-              href="https://github.com/itsimed"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden md:inline-flex items-center gap-2 text-sm font-semibold text-foreground/90 hover:text-foreground transition-colors"
-            >
-              {t('projects.viewAll')}
-              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full border border-foreground/20">
-                →
-              </span>
-            </a>
           </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {projects.map((project) => (
-              <motion.div
-                key={project.id}
-                variants={itemVariants}
-                whileHover={{ 
-                  y: -8,
-                  scale: 1.02,
-                  transition: { duration: 0.25, ease: [0.34, 1.56, 0.64, 1] }
-                }}
-                className="group rounded-2xl overflow-hidden border border-foreground/10 bg-gradient-to-b from-white/5 to-white/[0.02] hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-200"
-              >
-                {/* Cover */}
-                <div className="relative h-40 w-full overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-secondary/20 to-accent/20 opacity-30" />
-                  <img
-                    src={project.image}
-                    alt={`${t(`projects.projects.${project.title}.title`)} project preview`}
-                    className="h-full w-full object-cover opacity-80 group-hover:opacity-90 transition-opacity duration-300"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).style.display = 'none'
-                    }}
-                  />
-                </div>
-
-                {/* Content */}
-                <div className="p-6">
-                  <h3 className="text-lg md:text-xl font-bold mb-2">{t(`projects.projects.${project.title}.title`)}</h3>
-                  <p className="text-foreground/85 mb-5 text-sm leading-relaxed">{t(`projects.projects.${project.title}.description`)}</p>
-
-                  <div className="flex gap-3">
-                    <motion.a
-                      href={project.liveDemo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="flex-1 bg-gradient-primary text-background text-center py-2.5 px-4 rounded-full font-semibold text-sm hover:shadow-lg transition-shadow duration-300"
-                      aria-label={`${t(`projects.projects.${project.title}.button`)} - ${t(`projects.projects.${project.title}.title`)}`}
-                    >
-                      {t(`projects.projects.${project.title}.button`)}
-                    </motion.a>
-                    {project.title !== 'wassalni' && (
-                      <motion.a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="flex-1 border border-foreground/20 text-foreground text-center py-2.5 px-4 rounded-full font-semibold text-sm hover:border-primary/30 transition-colors duration-300"
-                        aria-label={`View ${t(`projects.projects.${project.title}.title`)} on GitHub`}
-                      >
-                        {t('projects.github')}
-                      </motion.a>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-          
-          <div className="text-center mt-16">
-            <p 
-              style={{ color: 'inherit' }}
-              className="text-lg text-foreground/85 mb-8"
-            >
-              {t('projects.moreProjects')}
-            </p>
-            <a
-              href="https://github.com/itsimed"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: 'inherit', backgroundColor: 'inherit' }}
-              className="inline-block border border-primary text-primary px-8 py-3 rounded-full font-semibold hover:bg-primary hover:text-background hover:shadow-lg hover:shadow-primary/30 transition-all duration-300"
-            >
-              {t('projects.viewAllProjects')}
-            </a>
-          </div>
+          <a className="font-semibold text-primary underline underline-offset-4 hover:text-foreground" href="https://github.com/itsimed" target="_blank" rel="noreferrer">
+            {t('projects.viewAll')}
+          </a>
         </div>
+
+        <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {portfolioProjects.map(({ id, image, demoUrl, githubUrl, technologies }, index) => (
+            <article key={id} className="flex flex-col overflow-hidden rounded-sm border border-border bg-surface">
+              <div className="aspect-[16/10] overflow-hidden bg-border">
+                <img
+                  src={image}
+                  alt={t(`portfolio.projects.${id}.imageAlt`)}
+                  loading={index < 3 ? 'eager' : 'lazy'}
+                  decoding="async"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="flex flex-1 flex-col p-5">
+                <h3 className="text-xl font-semibold">{t(`projects.projects.${id}.title`)}</h3>
+                <p className="mt-2 flex-1 leading-relaxed text-muted">{t(`projects.projects.${id}.description`)}</p>
+                <ul className="mt-4 flex flex-wrap gap-2" aria-label={t('portfolio.projects.technologies')}>
+                  {technologies.map((technology) => (
+                    <li key={technology} className="rounded-sm bg-background px-2 py-1 text-xs font-medium text-muted">
+                      {technology}
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-6 flex gap-4 border-t border-border pt-4 text-sm font-semibold">
+                  <a className="min-h-11 py-2 text-primary underline underline-offset-4 hover:text-foreground" href={demoUrl} target="_blank" rel="noreferrer">
+                    {t(`projects.projects.${id}.button`)}
+                  </a>
+                  {githubUrl && (
+                    <a className="min-h-11 py-2 text-primary underline underline-offset-4 hover:text-foreground" href={githubUrl} target="_blank" rel="noreferrer">
+                      {t('projects.github')}
+                    </a>
+                  )}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+        <p className="mt-8 text-sm text-muted">{t('projects.moreProjects')}</p>
       </div>
     </section>
   );
