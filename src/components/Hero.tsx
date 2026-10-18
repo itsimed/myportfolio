@@ -147,13 +147,14 @@ const Hero = () => {
   ];
 
   return (
-    <section className="min-h-screen bg-black text-white flex flex-col justify-center relative overflow-hidden pt-16 sm:pt-20 lg:pt-24 w-full">
+    <section id="hero" aria-labelledby="hero-title" className="min-h-screen bg-black text-white flex flex-col justify-center relative overflow-hidden pt-16 sm:pt-20 lg:pt-24 w-full">
       <div className="container mx-auto px-3 sm:px-4 md:px-6 relative z-10 flex-1 flex flex-col justify-center w-full">
         <div className="max-w-7xl mx-auto w-full">
           {/* Row 1: Title (left) + Projects pill (right) */}
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-2 sm:mb-4 lg:mb-10">
             <div className="lg:flex-1 lg:pr-10 flex justify-center sm:justify-start">
               <motion.h1
+                id="hero-title"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
