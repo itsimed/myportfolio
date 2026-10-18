@@ -1,285 +1,102 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  font-family: Inter, "Avenir Next", Avenir, "Segoe UI", sans-serif;
+  color: #1c1d19;
+  background: #f4f3ef;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --color-background: 244 243 239;
+  --color-surface: 255 255 255;
+  --color-foreground: 28 29 25;
+  --color-muted: 83 86 79;
+  --color-primary: 49 83 65;
+  --color-accent: 174 79 53;
+  --color-border: 217 215 208;
+  --color-control-border: 112 110 102;
+  --color-focus: 19 79 153;
+}
+
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
 html {
+  min-width: 320px;
   scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
 }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
-  background-color: #000000;
-  color: #ffffff;
-  line-height: 1.6;
-  overflow-x: hidden;
-  max-width: 100vw;
+  min-width: 320px;
+  margin: 0;
+  background: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+  font-size: 1rem;
+  line-height: 1.65;
 }
 
-html {
-  overflow-x: hidden;
-  max-width: 100vw;
+button,
+input,
+textarea,
+select {
+  font: inherit;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
 }
 
-::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
+a {
+  color: inherit;
 }
 
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #59d102, #f3f520);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #4bb002, #e6e820);
-}
-
-/* Selection styles */
-::selection {
-  background: rgba(89, 209, 2, 0.3);
-  color: #ffffff;
-}
-
-/* Focus styles */
-:focus-visible {
-  outline: 2px solid #59d102;
-  outline-offset: 2px;
-}
-
-/* Screen reader only utility class */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-
-/* Advanced smoke animations */
-@keyframes smokeFloat {
-  0%, 100% { 
-    transform: translate(-50%, -50%) scale(1) translate3d(0, 0, 0);
-    opacity: 0.5;
-  }
-  25% {
-    transform: translate(-50%, -50%) scale(1.15) translate3d(20px, -15px, 0);
-    opacity: 0.7;
-  }
-  50% { 
-    transform: translate(-50%, -50%) scale(1.25) translate3d(-15px, -25px, 0);
-    opacity: 0.8;
-  }
-  75% {
-    transform: translate(-50%, -50%) scale(1.1) translate3d(25px, 10px, 0);
-    opacity: 0.6;
-  }
-}
-
-@keyframes smokeRotate {
-  0% { 
-    filter: blur(80px) hue-rotate(0deg);
-  }
-  100% { 
-    filter: blur(80px) hue-rotate(360deg);
-  }
-}
-
-@keyframes smokeWisp {
-  0%, 100% { 
-    transform: translate(-50%, -50%) scale(1) skewX(0deg);
-    opacity: 0.4;
-  }
-  33% { 
-    transform: translate(-50%, -50%) scale(1.3) skewX(10deg);
-    opacity: 0.6;
-  }
-  66% { 
-    transform: translate(-50%, -50%) scale(0.9) skewX(-10deg);
-    opacity: 0.5;
-  }
-}
-
-@keyframes smokePulse {
-  0%, 100% { 
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 0.45;
-  }
-  50% { 
-    transform: translate(-50%, -50%) scale(1.35);
-    opacity: 0.7;
-  }
-}
-
-@keyframes smokeTrail {
-  0%, 100% { 
-    transform: translate(-50%, -50%) scale(1) translateX(0);
-    opacity: 0.3;
-  }
-  50% { 
-    transform: translate(-50%, -50%) scale(1.2) translateX(-30px);
-    opacity: 0.5;
-  }
-}
-
-@keyframes smokeGlow {
-  0%, 100% { 
-    transform: translate(-50%, -50%) scale(1) rotate(0deg);
-    opacity: 0.35;
-  }
-  33% {
-    transform: translate(-50%, -50%) scale(1.15) rotate(120deg);
-    opacity: 0.55;
-  }
-  66% {
-    transform: translate(-50%, -50%) scale(1.25) rotate(240deg);
-    opacity: 0.45;
-  }
-}
-
-/* Text-only animations for CONTACT banner */
-@keyframes letterBreathe {
-  0%, 100% { letter-spacing: 0.05em; }
-  50% { letter-spacing: 0.25em; }
-}
-
-@keyframes textGlowPulse {
-  0%, 100% { text-shadow: 0 0 0 rgba(243, 245, 32, 0), 0 0 0 rgba(89, 209, 2, 0); }
-  50% { text-shadow: 0 0 12px rgba(243, 245, 32, 0.45), 0 0 24px rgba(89, 209, 2, 0.35); }
-}
-
-/* Additional subtle, per-letter animations */
-@keyframes textWaveY {
-  0%, 100% { transform: translateY(0); }
-  25% { transform: translateY(-2px); }
-  50% { transform: translateY(1px); }
-  75% { transform: translateY(-1px); }
-}
-
-@keyframes textTiltMicro {
-  0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(0.8deg); }
-}
-
-@keyframes textScaleMicro {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.03); }
-}
-
-@keyframes textStrokePulse {
-  0%, 100% { text-shadow: 0 0 0 rgba(0,0,0,0.0); }
-  50% { text-shadow: 0 0 1px rgba(0,0,0,0.35), 0 0 2px rgba(0,0,0,0.25); }
-}
-
-/* Utility classes */
-.animate-letter-breathe {
-  animation: letterBreathe 4s ease-in-out infinite;
-}
-
-.animate-text-glow {
-  animation: textGlowPulse 3.5s ease-in-out infinite;
-}
-
-/* Helper to ensure animations take effect on inline text */
-.banner-word {
-  display: inline-block;
-  will-change: letter-spacing, text-shadow;
-}
-
-/* Per-letter animated class */
-.banner-letter {
-  display: inline-block;
-  will-change: transform, text-shadow;
-  animation: 
-    textWaveY 2.6s ease-in-out infinite,
-    textTiltMicro 4.2s ease-in-out infinite,
-    textScaleMicro 3.6s ease-in-out infinite,
-    textStrokePulse 5s ease-in-out infinite;
-}
-
-/* Animated separator between words */
-@keyframes sepPulse {
-  0%, 100% { transform: scaleY(1); opacity: 0.35; }
-  50% { transform: scaleY(1.35); opacity: 0.75; }
-}
-
-.banner-separator {
-  display: inline-block;
-  width: 1px;
-  height: 0.9em;
-  vertical-align: middle;
-  animation: sepPulse 2.8s ease-in-out infinite;
-}
-
-/* More visible animated dot separator */
-.banner-separator-dot {
-  display: inline-block;
-  width: 0.4em;
-  height: 0.4em;
-  border-radius: 9999px;
-  background: radial-gradient(circle at 40% 40%, #f3f520 0%, #f3f520 45%, #59d102 100%);
-  box-shadow: 0 0 6px rgba(243, 245, 32, 0.35), 0 0 10px rgba(89, 209, 2, 0.25);
-  animation: sepPulse 2.8s ease-in-out infinite;
-}
-
-/* Rotating 4-point star separator (SVG-based) */
-@keyframes starSpin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.banner-separator-star {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.5em;
-  height: 2.5em;
-  margin: 0 1em;
-  animation: starSpin 3s linear infinite;
-  flex-shrink: 0;
-}
-
-@media (min-width: 768px) {
-  .banner-separator-star {
-    width: 4em;
-    height: 4em;
-    margin: 0 2em;
-  }
-}
-
-@media (min-width: 1024px) {
-  .banner-separator-star {
-    width: 5em;
-    height: 5em;
-    margin: 0 3em;
-  }
-}
-
-.banner-separator-star img {
-  width: 100%;
-  height: 100%;
+img,
+svg {
   display: block;
+  max-width: 100%;
 }
 
-/* Reduce motion for accessibility */
+::selection {
+  color: rgb(var(--color-surface));
+  background: rgb(var(--color-primary));
+}
+
+:focus-visible {
+  outline: 3px solid rgb(var(--color-focus));
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.75rem 1rem;
+  transform: translateY(-160%);
+  border-radius: 0.25rem;
+  background: rgb(var(--color-foreground));
+  color: rgb(var(--color-surface));
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .banner-separator-star { animation: none; }
-  .banner-letter { animation: none; }
-  .animate-letter-breathe { animation: none; }
-  .animate-text-glow { animation: none; }
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

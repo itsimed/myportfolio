@@ -1,6 +1,5 @@
-// Centralized font families for the project
 export const fonts = {
-  sans: 'Inter, system-ui, Avenir, Helvetica, Arial, sans-serif',
-  serif: 'Georgia, Cambria, Times New Roman, Times, serif',
-  mono: 'Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace',
-}; 
+  sans: 'Inter, "Avenir Next", Avenir, "Segoe UI", sans-serif',
+  serif: 'Georgia, Cambria, "Times New Roman", serif',
+  mono: 'ui-monospace, SFMono-Regular, Menlo, Consolas, monospace',
+} as const;
