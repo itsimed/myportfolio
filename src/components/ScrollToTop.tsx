@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { HiArrowUp } from 'react-icons/hi';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '../hooks/useLanguage';
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);

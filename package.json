@@ -5,6 +5,7 @@
   "type": "module",
   "homepage": "https://imedbelouettar.me",
   "scripts": {
+    "test": "vitest run --environment jsdom",
     "dev": "vite",
     "build": "tsc -b && vite build && node scripts/fix-html.js",
     "lint": "eslint .",
@@ -20,19 +21,23 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
+    "@testing-library/react": "^16.1.0",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react": "^4.4.1",
     "autoprefixer": "^10.4.21",
+    "axe-core": "^4.10.3",
     "eslint": "^9.25.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "gh-pages": "^6.3.0",
     "globals": "^16.0.0",
+    "jsdom": "^25.0.1",
     "postcss": "^8.5.5",
     "tailwindcss": "^3.4.17",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.30.1",
-    "vite": "^6.3.5"
+    "vite": "^6.3.5",
+    "vitest": "^2.1.9"
   }
 }

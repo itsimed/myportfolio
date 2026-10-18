@@ -1,6 +1,6 @@
 import { portfolioProjects } from '../data/projects';
 import type { CaseStudy } from '../data/caseStudies';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '../hooks/useLanguage';
 
 interface CaseStudyPageProps {
   caseStudy: CaseStudy;

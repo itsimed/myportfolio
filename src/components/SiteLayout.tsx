@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import Navbar from './Navbar';
 import ScrollToTop from './ScrollToTop';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '../hooks/useLanguage';
 
 interface SiteLayoutProps {
   children: ReactNode;

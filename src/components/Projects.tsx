@@ -1,5 +1,5 @@
 import { portfolioProjects } from '../data/projects';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '../hooks/useLanguage';
 
 const Projects = () => {
   const { t } = useLanguage();

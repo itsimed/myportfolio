@@ -1,26 +1,8 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
+import { LanguageContext } from './LanguageContext';
+import type { LanguageContextType, TranslationTree } from './LanguageContext';
 import { translations, type Language } from '../translations';
-
-type TranslationTree = {
-  [key: string]: string | TranslationTree;
-};
-
-interface LanguageContextType {
-  language: Language;
-  setLanguage: (language: Language) => void;
-  t: (key: string) => string;
-}
-
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
-
-export const useLanguage = () => {
-  const context = useContext(LanguageContext);
-  if (!context) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
-  }
-  return context;
-};
 
 interface LanguageProviderProps {
   children: ReactNode;
@@ -70,7 +52,7 @@ export const LanguageProvider = ({ children }: LanguageProviderProps) => {
     document.documentElement.lang = language;
   }, [language]);
 
-  const contextValue = useMemo(
+  const contextValue: LanguageContextType = useMemo(
     () => ({ language, setLanguage, t }),
     [language, setLanguage, t],
   );

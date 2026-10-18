@@ -1,81 +1,64 @@
-# Imed Eddine Belouettar - Portfolio
+# Imed Eddine Belouettar — Portfolio
 
-Personal portfolio website showcasing my work as a Front-end Developer & UI/UX Designer.
+Portfolio personnel présentant mon travail en développement front-end et en design UI/UX.
 
-## 🚀 Live Demo
+## Site
 
-Visit my portfolio at: [https://imedbelouettar.me](https://imedbelouettar.me)
+[imedbelouettar.me](https://imedbelouettar.me)
 
-## 🛠️ Technologies Used
+## Stack
 
-- **React 19** - Modern React with latest features
-- **TypeScript** - Type-safe development
-- **Vite** - Fast build tool and dev server
-- **Tailwind CSS** - Utility-first CSS framework
-- **Framer Motion** - Smooth animations
-- **React Icons** - Beautiful icon library
+- React 19, TypeScript et Vite
+- Tailwind CSS
+- EmailJS pour le formulaire de contact
+- Traductions françaises et anglaises
 
-## 📦 Installation
+## Développement local
 
-1. Clone the repository:
-```bash
-git clone https://github.com/itsimed/myportfolio.git
-cd myportfolio
-```
-
-2. Install dependencies:
 ```bash
 npm install
-```
-
-3. Start the development server:
-```bash
 npm run dev
 ```
 
-4. Open [http://localhost:5173](http://localhost:5173) in your browser.
+## Pages
 
-## 🚀 Deployment
+- `/` — accueil, profil, compétences, projets et contact
+- `/projects/wassalni/` — étude de cas Wassalni
+- `/projects/divanhane/` — étude de cas Divan Hane
+- `/projects/picci/` — étude de cas Picci
+- `/accessibility/` — déclaration d’accessibilité
+- `404.html` — page introuvable pour GitHub Pages
 
-### Manual Deployment
-To deploy manually to GitHub Pages:
+Les pages de détail sont des entrées HTML statiques Vite, pour que leurs URLs fonctionnent en accès direct sur GitHub Pages. Les informations absentes des sources (rôle, durée, équipe et méthodes) sont signalées comme restant à compléter plutôt qu’inventées.
+
+## Structure
+
+```text
+src/
+├── components/     # Navigation, layout et sections de la page d’accueil
+├── contexts/       # État de langue français/anglais
+├── data/           # Données des projets et études de cas
+├── pages/          # Études de cas, accessibilité et 404
+└── translations/   # Textes français et anglais
+
+projects/<slug>/index.html
+accessibility/index.html
+404.html
+```
+
+## Tests et build
 
 ```bash
-npm run deploy
+npm test
+npm run build
 ```
 
-### Automatic Deployment
-The project is configured with GitHub Actions for automatic deployment. Simply push to the `main` branch and the site will be automatically deployed to GitHub Pages.
+La suite axe/jsdom vérifie l’accueil, les trois études de cas, la déclaration et la page 404, ainsi que le menu clavier et la langue du document. Le contraste est mesuré séparément, car jsdom ne fournit pas l’API Canvas utilisée par axe pour cette règle. Voir [ACCESSIBILITE.md](./ACCESSIBILITE.md) pour le périmètre et les vérifications manuelles, et [A-COMPLETER.md](./A-COMPLETER.md) pour les contenus manquants.
 
-## 📁 Project Structure
+Le build génère les pages dans `dist/`. Le workflow GitHub Actions exécute les tests puis publie le résultat sur GitHub Pages.
 
-```
-src/
-├── components/     # React components
-├── config/        # Configuration files
-├── contexts/      # React contexts
-├── data/          # Static data
-├── hooks/         # Custom React hooks
-├── styles/        # Global styles
-├── translations/  # Internationalization
-├── types/         # TypeScript type definitions
-└── ui/           # Reusable UI components
-```
+## Contact
 
-## 🎨 Features
-
-- **Responsive Design** - Works perfectly on all devices
-- **Smooth Animations** - Powered by Framer Motion
-- **Modern UI/UX** - Clean and professional design
-- **Fast Performance** - Optimized with Vite
-- **Type Safety** - Full TypeScript support
-
-## 📝 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## 📧 Contact
-
-- **Email**: ie.belouettar@gmail.com
-- **LinkedIn**: www.linkedin.com/in/ie-belouettar
-- **GitHub**: [@itsimed](https://github.com/itsimed)
+- Email : [ie.belouettar@gmail.com](mailto:ie.belouettar@gmail.com)
+- LinkedIn : [ie-belouettar](https://www.linkedin.com/in/ie-belouettar/)
+- GitHub : [@itsimed](https://github.com/itsimed)
