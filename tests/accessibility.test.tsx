@@ -5,10 +5,10 @@ import '../src/index.css';
 import App from '../src/App';
 
 const routes = [
-  ['home page', '/', 'Développeur Front-end'],
-  ['Wassalni case study', '/projects/wassalni/', 'Wassalni'],
-  ['Divan Hane case study', '/projects/divanhane/', 'Divan Hane'],
-  ['Picci case study', '/projects/picci/', 'Picci'],
+  ['home page', '/', 'Je conçois des parcours numériques utilisables par tous.'],
+  ['Wassalni case study', '/projects/wassalni/', 'Wassalni : rendre le covoiturage simple et rassurant'],
+  ['MIASHS case study', '/projects/miashs/', 'Audit et refonte du parcours du site MIASHS – Paris 8'],
+  ['Sanou case study', '/projects/sanou-va-bien/', 'Sanou va bien : du recueil des besoins à la mise en production'],
   ['accessibility statement', '/accessibility/', 'Déclaration d’accessibilité'],
   ['not-found page', '/not-a-real-page/', 'Page introuvable'],
 ] as const;
@@ -48,11 +48,11 @@ describe('keyboard navigation and language', () => {
 
     fireEvent.click(menuButton);
     expect(menuButton.getAttribute('aria-expanded')).toBe('true');
-    expect(document.getElementById('mobile-navigation')?.hasAttribute('hidden')).toBe(false);
+    expect(document.getElementById('primary-navigation')?.className).not.toContain('hidden');
 
     fireEvent.keyDown(document, { key: 'Escape' });
     expect(menuButton.getAttribute('aria-expanded')).toBe('false');
-    expect(document.getElementById('mobile-navigation')?.hasAttribute('hidden')).toBe(true);
+    expect(document.getElementById('primary-navigation')?.className).toContain('hidden');
   });
 
   it('synchronizes the selected language with the document language and labels', () => {
@@ -61,6 +61,6 @@ describe('keyboard navigation and language', () => {
 
     expect(document.documentElement.lang).toBe('en');
     expect(screen.getByRole('link', { name: 'Skip to main content' })).toBeTruthy();
-    expect(document.title).toBe('Imed Eddine Belouettar — Portfolio');
+    expect(document.title).toBe('Imed Belouettar – UX/UI Product Designer');
   });
 });

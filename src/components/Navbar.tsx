@@ -1,99 +1,78 @@
 import { useEffect, useState } from 'react';
 import { useLanguage } from '../hooks/useLanguage';
 
-const navigationItems = [
-  { key: 'nav.home', href: '#hero' },
-  { key: 'nav.about', href: '#about' },
-  { key: 'nav.skills', href: '#skills' },
-  { key: 'nav.projects', href: '#projects' },
-  { key: 'nav.contact', href: '#contact' },
-] as const;
-
 const Navbar = () => {
   const { language, setLanguage, t } = useLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
   const isHomePage = window.location.pathname === '/';
 
+  const navigationItems = [
+    { label: t('portfolio2026.navigation.cases'), href: '#cas' },
+    { label: t('portfolio2026.navigation.method'), href: '#methode' },
+    { label: t('portfolio2026.navigation.about'), href: '#apropos' },
+    { label: t('portfolio2026.navigation.contact'), href: '#contact' },
+  ];
+
   useEffect(() => {
     if (!menuOpen) return;
-
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === 'Escape') setMenuOpen(false);
     };
-
     document.addEventListener('keydown', closeOnEscape);
     return () => document.removeEventListener('keydown', closeOnEscape);
   }, [menuOpen]);
 
   const closeMenu = () => setMenuOpen(false);
-  const renderLinks = () => navigationItems.map(({ key, href }) => (
-    <a
-      key={href}
-      href={isHomePage ? href : `/${href}`}
-      onClick={closeMenu}
-      className="block rounded-sm px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-primary"
-    >
-      {t(key)}
-    </a>
-  ));
+  const homeHref = isHomePage ? '#accueil' : '/#accueil';
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur">
-      <div className="mx-auto flex min-h-16 max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
-        <a href={isHomePage ? '#hero' : '/'} className="flex shrink-0 items-center gap-3 rounded-sm" onClick={closeMenu}>
-          <img src="/logo.webp" alt="" className="h-9 w-9 rounded-full object-cover" />
-          <span className="text-sm font-semibold tracking-tight sm:text-base">
-            Imed Eddine Belouettar
-          </span>
+    <header className="border-b border-border bg-background">
+      <nav aria-label={t('portfolio.navigation.primary')} className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-5">
+        <a
+          href={homeHref}
+          onClick={closeMenu}
+          className="font-display text-xl font-extrabold text-foreground no-underline"
+        >
+          Imed Belouettar
         </a>
 
-        <nav aria-label={t('portfolio.navigation.primary')} className="hidden items-center gap-1 lg:flex">
-          {renderLinks()}
-        </nav>
+        <button
+          type="button"
+          className="grid size-11 place-items-center rounded-md border border-control-border lg:hidden"
+          aria-expanded={menuOpen}
+          aria-controls="primary-navigation"
+          aria-label={menuOpen
+            ? (language === 'fr' ? 'Fermer le menu' : 'Close menu')
+            : (language === 'fr' ? 'Ouvrir le menu' : 'Open menu')}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          <span aria-hidden="true" className="text-xl leading-none">{menuOpen ? '×' : '☰'}</span>
+        </button>
 
-        <div className="flex items-center gap-2">
-          <div role="group" className="flex items-center gap-1" aria-label={t('portfolio.navigation.language')}>
-            <button
-              type="button"
-              onClick={() => setLanguage('fr')}
-              aria-pressed={language === 'fr'}
-              className="rounded-sm px-2 py-2 text-sm font-semibold text-muted hover:text-foreground focus-visible:outline"
+        <div
+          id="primary-navigation"
+          className={`${menuOpen ? 'flex' : 'hidden'} w-full flex-col gap-2 text-base font-medium lg:flex lg:w-auto lg:flex-row lg:items-center lg:gap-x-7`}
+        >
+          {navigationItems.map(({ label, href }, index) => (
+            <a
+              key={href}
+              href={isHomePage ? href : `/${href}`}
+              onClick={closeMenu}
+              aria-current={isHomePage && index === 0 ? 'page' : undefined}
+              className="py-2 text-foreground no-underline hover:text-primary"
             >
-              FR
-            </button>
-            <span aria-hidden="true" className="text-border">/</span>
-            <button
-              type="button"
-              onClick={() => setLanguage('en')}
-              aria-pressed={language === 'en'}
-              className="rounded-sm px-2 py-2 text-sm font-semibold text-muted hover:text-foreground focus-visible:outline"
-            >
-              EN
-            </button>
-          </div>
-
+              {label}
+            </a>
+          ))}
           <button
             type="button"
-            className="grid size-11 place-items-center rounded-sm border border-control-border lg:hidden"
-            aria-expanded={menuOpen}
-            aria-controls="mobile-navigation"
-            aria-label={menuOpen ? t('portfolio.navigation.closeMenu') : t('portfolio.navigation.openMenu')}
-            onClick={() => setMenuOpen((open) => !open)}
+            onClick={() => setLanguage(language === 'fr' ? 'en' : 'fr')}
+            aria-label={`${t('portfolio2026.navigation.language')}: ${language === 'fr' ? 'English' : 'Français'}`}
+            className="self-start py-2 text-foreground underline decoration-border underline-offset-4 hover:text-primary lg:self-auto"
           >
-            <span aria-hidden="true" className="text-xl leading-none">{menuOpen ? '×' : '☰'}</span>
+            {language === 'fr' ? 'EN' : 'FR'}
           </button>
         </div>
-      </div>
-
-      <nav
-        id="mobile-navigation"
-        aria-label={t('portfolio.navigation.primary')}
-        hidden={!menuOpen}
-        className="border-t border-border bg-background px-5 py-3 lg:hidden"
-      >
-        <ul className="mx-auto flex max-w-6xl flex-col items-stretch">
-          {renderLinks().map((link) => <li key={link.key}>{link}</li>)}
-        </ul>
       </nav>
     </header>
   );

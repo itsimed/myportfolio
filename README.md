@@ -1,17 +1,6 @@
-# Imed Eddine Belouettar — Portfolio
+# Imed Belouettar — Portfolio
 
-Portfolio personnel présentant mon travail en développement front-end et en design UI/UX.
-
-## Site
-
-[imedbelouettar.me](https://imedbelouettar.me)
-
-## Stack
-
-- React 19, TypeScript et Vite
-- Tailwind CSS
-- EmailJS pour le formulaire de contact
-- Traductions françaises et anglaises
+Portfolio de Product Designer UX/UI, organisé selon la maquette HTML de référence fournie.
 
 ## Développement local
 
@@ -20,45 +9,51 @@ npm install
 npm run dev
 ```
 
-## Pages
+## Structure de la page d’accueil
 
-- `/` — accueil, profil, compétences, projets et contact
-- `/projects/wassalni/` — étude de cas Wassalni
-- `/projects/divanhane/` — étude de cas Divan Hane
-- `/projects/picci/` — étude de cas Picci
-- `/accessibility/` — déclaration d’accessibilité
-- `404.html` — page introuvable pour GitHub Pages
+Dans l’ordre de la référence :
 
-Les pages de détail sont des entrées HTML statiques Vite, pour que leurs URLs fonctionnent en accès direct sur GitHub Pages. Les informations absentes des sources (rôle, durée, équipe et méthodes) sont signalées comme restant à compléter plutôt qu’inventées.
+1. Navigation vers les études de cas, la méthode, À propos et Contact; bascule FR/EN.
+2. Accueil et recherche d’alternance, phrase de positionnement, CV et informations clés.
+3. Études de cas Wassalni, audit MIASHS – Paris 8 et Sanou va bien.
+4. Méthode de travail en quatre étapes.
+5. Bandeau consacré à l’accessibilité.
+6. Réalisations front-end : Divan Hane, Picci, BDTech et CabinetCM.
+7. À propos.
+8. Contact et liens sociaux.
+9. Pied de page avec déclaration d’accessibilité.
 
-## Structure
+La navigation des études de cas mène vers des pages accessibles directement :
+
+- `/projects/wassalni/`
+- `/projects/miashs/`
+- `/projects/sanou-va-bien/`
+- `/accessibility/`
+
+Vite compile ces entrées HTML séparément pour le déploiement GitHub Pages. `404.html` fournit la page d’erreur du site.
+
+## Organisation du code
 
 ```text
 src/
-├── components/     # Navigation, layout et sections de la page d’accueil
-├── contexts/       # État de langue français/anglais
-├── data/           # Données des projets et études de cas
-├── pages/          # Études de cas, accessibilité et 404
-└── translations/   # Textes français et anglais
+├── components/     # Navigation et sections de la maquette
+├── contexts/       # Fournisseur de langue FR/EN
+├── data/           # Descripteurs des études de cas et réalisations
+├── hooks/          # Hook de langue
+├── pages/          # Pages d’étude de cas, déclaration et 404
+└── translations/   # Contenu français/anglais
 
 projects/<slug>/index.html
 accessibility/index.html
-404.html
 ```
 
-## Tests et build
+Les textes de la maquette, y compris `[DATE]`, `[X]` et les emplacements de visuels, sont conservés comme éléments à valider/remplacer. Voir [A-COMPLETER.md](./A-COMPLETER.md).
+
+## Vérifications
 
 ```bash
 npm test
 npm run build
 ```
 
-La suite axe/jsdom vérifie l’accueil, les trois études de cas, la déclaration et la page 404, ainsi que le menu clavier et la langue du document. Le contraste est mesuré séparément, car jsdom ne fournit pas l’API Canvas utilisée par axe pour cette règle. Voir [ACCESSIBILITE.md](./ACCESSIBILITE.md) pour le périmètre et les vérifications manuelles, et [A-COMPLETER.md](./A-COMPLETER.md) pour les contenus manquants.
-
-Le build génère les pages dans `dist/`. Le workflow GitHub Actions exécute les tests puis publie le résultat sur GitHub Pages.
-
-## Contact
-
-- Email : [ie.belouettar@gmail.com](mailto:ie.belouettar@gmail.com)
-- LinkedIn : [ie-belouettar](https://www.linkedin.com/in/ie-belouettar/)
-- GitHub : [@itsimed](https://github.com/itsimed)
+Les tests axe/jsdom couvrent les pages et le comportement clavier. La règle automatique de contraste est désactivée dans jsdom (absence d’API Canvas); les tests automatiques ne remplacent pas les vérifications manuelles détaillées dans [ACCESSIBILITE.md](./ACCESSIBILITE.md).

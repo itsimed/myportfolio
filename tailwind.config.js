@@ -19,8 +19,8 @@ export default {
         focus: 'rgb(var(--color-focus) / <alpha-value>)',
       },
       fontFamily: {
-        sans: ['Inter', '"Avenir Next"', 'Avenir', '"Segoe UI"', 'sans-serif'],
-        serif: ['Georgia', 'Cambria', '"Times New Roman"', 'serif'],
+        sans: ['"Instrument Sans"', 'system-ui', 'sans-serif'],
+        display: ['"Bricolage Grotesque"', 'sans-serif'],
       },
       backgroundImage: {
         'gradient-primary': 'linear-gradient(135deg, rgb(var(--color-primary)), rgb(var(--color-accent)))',

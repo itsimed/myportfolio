@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
 import About from './components/About';
+import AccessibilityBand from './components/AccessibilityBand';
 import Contact from './components/Contact';
+import FrontendProjects from './components/FrontendProjects';
 import Hero from './components/Hero';
+import Method from './components/Method';
 import Projects from './components/Projects';
 import SiteLayout from './components/SiteLayout';
-import Skills from './components/Skills';
 import { LanguageProvider } from './contexts/LanguageProvider';
 import { getCaseStudy } from './data/caseStudies';
 import { useLanguage } from './hooks/useLanguage';
@@ -15,9 +17,11 @@ import NotFoundPage from './pages/NotFoundPage';
 const HomePage = () => (
   <>
     <Hero />
-    <About />
-    <Skills />
     <Projects />
+    <Method />
+    <AccessibilityBand />
+    <FrontendProjects />
+    <About />
     <Contact />
   </>
 );
@@ -44,14 +48,14 @@ const PortfolioRoutes = () => {
     let description = t('portfolio.metadata.notFoundDescription');
 
     if (normalizedPath === '/') {
-      title = t('portfolio.metadata.homeTitle');
-      description = t('portfolio.metadata.homeDescription');
+      title = t('portfolio2026.metadata.title');
+      description = t('portfolio2026.metadata.description');
     } else if (normalizedPath === '/accessibility') {
       title = t('portfolio.accessibility.title');
       description = t('portfolio.metadata.accessibilityDescription');
     } else if (caseStudy) {
-      title = `${t(`projects.projects.${caseStudy.id}.title`)} — ${t('portfolio.metadata.caseStudySuffix')}`;
-      description = t(`projects.projects.${caseStudy.id}.description`);
+      title = `${t(caseStudy.titleKey)} — Imed Belouettar`;
+      description = t(caseStudy.summaryKey);
     }
 
     document.title = title;

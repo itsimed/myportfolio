@@ -1,29 +1,23 @@
-# À compléter avant publication finale
+# Éléments à valider avant publication
 
-Les éléments ci-dessous ne sont pas documentés dans le dépôt ou ne peuvent pas être confirmés à partir des fichiers disponibles. Ils ont été laissés visibles comme éléments à compléter plutôt que remplacés par des informations supposées.
+Les textes et la structure suivent le HTML fourni. Les valeurs entre crochets dans cette référence ont été conservées exprès plutôt que devinées.
 
-## Maquette et direction visuelle
+## Contenus à confirmer
 
-- Ajouter la maquette de référence attendue (le fichier `docs/maquette-reference.html` n’existe pas dans le dépôt) et confirmer que la direction claire implémentée correspond au rendu voulu.
-- Confirmer la palette, les polices définitives et le choix du portrait.
+- Remplacer `[DATE]` par la date réelle de début de recherche d’alternance.
+- Confirmer la question du projet Wassalni et remplacer `[X]` pour le nombre d’étapes, la durée et la taille d’équipe.
+- Confirmer l’intitulé « Master 2 Technologie & Handicap », les détails de l’audit MIASHS et les rôles/durées des projets.
+- Valider tous les contenus de projets et biographiques du HTML source avant publication.
 
-## Études de cas
+## Visuels
 
-Pour Wassalni, Divan Hane et Picci, fournir les éléments réels à publier :
+- Fournir les captures Wassalni (2–3 écrans, avant/après).
+- Fournir la comparaison du site MIASHS et un extrait de la grille d’audit.
+- Fournir wireframes et maquette finale de Sanou va bien.
+- Confirmer le portrait de profil utilisé et les textes alternatifs définitifs.
 
-- rôle et responsabilités personnelles;
-- durée, taille de l’équipe et méthode de travail;
-- problématique, public cible, contraintes et objectifs;
-- recherche utilisateur, décisions de conception et itérations;
-- résultats, mesures d’impact ou enseignements;
-- légendes, captures d’écran autorisées et textes alternatifs descriptifs.
+## Publication et accessibilité
 
-Les champs rôle, durée, équipe et méthodes affichent actuellement « À compléter ». Les résumés et technologies visibles sont repris des descriptions et liens déjà présents dans le portfolio.
-
-## Contenus et publication
-
-- Confirmer la version et la langue du CV lié à `public/CV octobre.pdf`.
-- Vérifier la disponibilité et les droits de diffusion des images hébergées sur Google Cloud Storage; les aperçus des projets ne sont pas encore locaux.
-- Confirmer que la galerie Imgur est le bon lien public pour Wassalni.
-- Tester la configuration EmailJS en production et vérifier les messages d’erreur et de succès.
-- Effectuer les contrôles manuels listés dans [ACCESSIBILITE.md](./ACCESSIBILITE.md) avec les navigateurs, appareils et technologies d’assistance ciblés.
+- Confirmer que `public/CV octobre.pdf` est le CV voulu et à jour.
+- Tester les liens LinkedIn, GitHub, les démos et l’adresse email.
+- Effectuer les vérifications manuelles listées dans [ACCESSIBILITE.md](./ACCESSIBILITE.md) avant toute revendication de conformité RGAA 4.1.

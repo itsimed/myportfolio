@@ -1,9 +1,8 @@
 import { createContext } from 'react';
 import type { Language } from '../translations';
 
-export type TranslationTree = {
-  [key: string]: string | TranslationTree;
-};
+export type TranslationValue = string | TranslationValue[] | TranslationTree;
+export type TranslationTree = { [key: string]: TranslationValue };
 
 export interface LanguageContextType {
   language: Language;

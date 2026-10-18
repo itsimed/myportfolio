@@ -3,37 +3,28 @@ import { useLanguage } from '../hooks/useLanguage';
 const About = () => {
   const { t } = useLanguage();
 
-  const focusAreas = [
-    'about.skills.uiux',
-    'about.skills.frontend',
-    'about.skills.accessibility',
-    'about.skills.userResearch',
-    'about.skills.projectManagement',
-    'about.skills.inclusiveDesign',
-  ];
-
   return (
-    <section id="about" aria-labelledby="about-title" className="px-5 py-20 sm:px-8 sm:py-28">
-      <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[0.7fr_1.3fr] md:gap-20">
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
-            {t('portfolio.about.eyebrow')}
-          </p>
-          <h2 id="about-title" className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
-            {t('about.title')}
-          </h2>
+    <section id="apropos" aria-labelledby="titre-apropos" className="border-t border-border bg-white">
+      <div className="mx-auto flex max-w-[1200px] flex-wrap items-center gap-12 px-6 py-[88px]">
+        <div className="relative aspect-[4/5] flex-[0_1_320px] overflow-hidden rounded-[20px] bg-[#E9E8E2]">
+          <img
+            src="/Belouettar%20Imed%20Eddine.webp"
+            alt={t('portfolio2026.about.portraitAlt')}
+            className="h-full w-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
-        <div className="space-y-5 text-lg leading-relaxed text-muted">
-          <p>{t('about.description1')}</p>
-          <p>{t('about.description2')}</p>
-          <p>{t('about.description3')}</p>
-          <ul className="flex flex-wrap gap-2 pt-3" aria-label={t('portfolio.about.focusLabel')}>
-            {focusAreas.map((area) => (
-              <li key={area} className="rounded-sm border border-border bg-surface px-3 py-2 text-sm font-medium text-foreground">
-                {t(area)}
-              </li>
-            ))}
-          </ul>
+        <div className="flex min-w-0 flex-[999_1_480px] flex-col gap-[18px]">
+          <h2 id="titre-apropos" className="m-0 font-display text-[42px] font-bold">
+            {t('portfolio2026.about.heading')}
+          </h2>
+          <p className="m-0 text-[19px] leading-relaxed text-[#3A3A3A]">
+            {t('portfolio2026.about.paragraph1')}
+          </p>
+          <p className="m-0 text-[19px] leading-relaxed text-[#3A3A3A]">
+            {t('portfolio2026.about.paragraph2')}
+          </p>
         </div>
       </div>
     </section>

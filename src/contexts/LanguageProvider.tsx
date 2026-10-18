@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 import { LanguageContext } from './LanguageContext';
-import type { LanguageContextType, TranslationTree } from './LanguageContext';
+import type { LanguageContextType, TranslationValue } from './LanguageContext';
 import { translations, type Language } from '../translations';
 
 interface LanguageProviderProps {
@@ -22,14 +22,27 @@ export const LanguageProvider = ({ children }: LanguageProviderProps) => {
 
   const t = useCallback((key: string): string => {
     const path = key.split('.');
-    let value: string | TranslationTree = translations[language];
+    let value: TranslationValue = translations[language];
 
     for (const part of path) {
-      if (typeof value === 'string' || !Object.prototype.hasOwnProperty.call(value, part)) {
+      if (typeof value === 'string') {
         console.error(`Missing ${language} translation: ${key}`);
         return key;
       }
-      value = value[part];
+      if (Array.isArray(value)) {
+        const index = Number(part);
+        if (!Number.isInteger(index) || !Object.prototype.hasOwnProperty.call(value, index)) {
+          console.error(`Missing ${language} translation: ${key}`);
+          return key;
+        }
+        value = value[index];
+      } else {
+        if (!Object.prototype.hasOwnProperty.call(value, part)) {
+          console.error(`Missing ${language} translation: ${key}`);
+          return key;
+        }
+        value = value[part];
+      }
     }
 
     if (typeof value !== 'string') {
