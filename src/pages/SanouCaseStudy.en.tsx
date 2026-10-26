@@ -415,7 +415,7 @@ const SanouCaseStudy = () => {
                 </li>
                 <li style={{ padding: "18px", border: "1px dashed #C084FC", display: "flex", flexDirection: "column", gap: "10px" }}>
                   <span style={{ fontFamily: "'Fondamento', serif", fontSize: "22px" }}>
-                    Donate ↗
+                    Donate
                   </span>
                   <span style={{ fontSize: "13px", color: "#D1D5DB", lineHeight: "1.5" }}>
                     HelloAsso, external site
