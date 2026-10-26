@@ -22,3 +22,7 @@ yarn-error.log*
 
 # Allow .gitkeep
 !.gitkeep
+
+# Local editor / assistant settings
+.vscode/
+.claude/settings.local.json

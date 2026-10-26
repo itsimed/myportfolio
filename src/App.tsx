@@ -1,61 +1,48 @@
-import { useEffect } from 'react';
-import About from './components/About';
-import AccessibilityBand from './components/AccessibilityBand';
-import Contact from './components/Contact';
-import FrontendProjects from './components/FrontendProjects';
-import Hero from './components/Hero';
-import Method from './components/Method';
-import Projects from './components/Projects';
+import { Suspense, lazy, useEffect } from 'react';
+import type { ComponentType } from 'react';
+import ScrollToTop from './components/ScrollToTop';
 import SiteLayout from './components/SiteLayout';
 import { LanguageProvider } from './contexts/LanguageProvider';
-import { getCaseStudy } from './data/caseStudies';
 import { useLanguage } from './hooks/useLanguage';
+import type { Language } from './translations';
 import AccessibilityPage from './pages/AccessibilityPage';
-import CaseStudyPage from './pages/CaseStudyPage';
 import NotFoundPage from './pages/NotFoundPage';
 
-const HomePage = () => (
-  <>
-    <Hero />
-    <Projects />
-    <Method />
-    <AccessibilityBand />
-    <FrontendProjects />
-    <About />
-    <Contact />
-  </>
-);
+/** Pages issues des maquettes : elles portent leur propre en-tête et pied de page.
+ * Chaque page existe en français et en anglais ; la langue choisie décide de la version affichée. */
+const designedPages: Partial<Record<string, Record<Language, ComponentType>>> = {
+  '/': {
+    fr: lazy(() => import('./pages/HomePage')),
+    en: lazy(() => import('./pages/HomePage.en')),
+  },
+  '/projects/wassalni': {
+    fr: lazy(() => import('./pages/WassalniCaseStudy')),
+    en: lazy(() => import('./pages/WassalniCaseStudy.en')),
+  },
+  '/projects/sanou-va-bien': {
+    fr: lazy(() => import('./pages/SanouCaseStudy')),
+    en: lazy(() => import('./pages/SanouCaseStudy.en')),
+  },
+  '/projects/fds-institut': {
+    fr: lazy(() => import('./pages/FdsCaseStudy')),
+    en: lazy(() => import('./pages/FdsCaseStudy.en')),
+  },
+};
 
 const PortfolioRoutes = () => {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
   const pathname = window.location.pathname;
   const normalizedPath = pathname.replace(/\/+$/, '') || '/';
-  const caseStudy = getCaseStudy(pathname);
-
-  let page;
-  if (normalizedPath === '/') {
-    page = <HomePage />;
-  } else if (normalizedPath === '/accessibility') {
-    page = <AccessibilityPage />;
-  } else if (caseStudy) {
-    page = <CaseStudyPage caseStudy={caseStudy} />;
-  } else {
-    page = <NotFoundPage />;
-  }
+  const DesignedPage = designedPages[normalizedPath]?.[language];
 
   useEffect(() => {
+    if (DesignedPage) return;
     let title = t('portfolio.metadata.notFoundTitle');
     let description = t('portfolio.metadata.notFoundDescription');
 
-    if (normalizedPath === '/') {
-      title = t('portfolio2026.metadata.title');
-      description = t('portfolio2026.metadata.description');
-    } else if (normalizedPath === '/accessibility') {
+    if (normalizedPath === '/accessibility') {
       title = t('portfolio.accessibility.title');
       description = t('portfolio.metadata.accessibilityDescription');
-    } else if (caseStudy) {
-      title = `${t(caseStudy.titleKey)} — Imed Belouettar`;
-      description = t(caseStudy.summaryKey);
     }
 
     document.title = title;
@@ -66,13 +53,25 @@ const PortfolioRoutes = () => {
       document.head.append(descriptionMeta);
     }
     descriptionMeta.content = description;
-  }, [caseStudy, normalizedPath, t]);
+  }, [DesignedPage, normalizedPath, t]);
 
-  return (
-    <SiteLayout isHome={normalizedPath === '/'}>
-      {page}
-    </SiteLayout>
-  );
+  if (DesignedPage) {
+    return (
+      <>
+        <Suspense fallback={null}><DesignedPage /></Suspense>
+        <ScrollToTop />
+      </>
+    );
+  }
+
+  let page;
+  if (normalizedPath === '/accessibility') {
+    page = <AccessibilityPage />;
+  } else {
+    page = <NotFoundPage />;
+  }
+
+  return <SiteLayout isHome={false}>{page}</SiteLayout>;
 };
 
 function App() {

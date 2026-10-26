@@ -1,0 +1,341 @@
+/*
+ * Styles communs aux pages issues des maquettes (accueil et études de cas).
+ * Les maquettes ont été conçues sans le « preflight » de Tailwind :
+ * on rétablit ici les valeurs par défaut du navigateur dont elles dépendent.
+ */
+.rd {
+  line-height: normal;
+}
+
+/* Les maquettes utilisent le modèle de boîte par défaut du navigateur. */
+.rd,
+.rd *,
+.rd *::before,
+.rd *::after {
+  box-sizing: content-box;
+}
+
+.rd h1, .rd h2, .rd h3, .rd h4 {
+  font-weight: bold;
+}
+
+.rd ol:not([style*="list-style"]) {
+  list-style: decimal;
+}
+
+.rd ul:not([style*="list-style"]) {
+  list-style: disc;
+}
+
+.rd img,
+.rd svg {
+  max-width: none;
+}
+
+.rd summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.rd summary::-webkit-details-marker {
+  display: none;
+}
+
+.rd .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Couleurs de lien et de focus propres à chaque identité */
+.rd-home a { color: #1F3BB8; }
+.rd-home a:hover { color: #132A8C; }
+.rd-home :focus-visible { outline: 3px solid #1F3BB8; outline-offset: 3px; border-radius: 8px; }
+
+.rd-wassalni a { color: #2A2CB0; }
+.rd-wassalni a:hover { color: #1E1F5C; }
+.rd-wassalni :focus-visible { outline: 3px solid #1E1F5C; outline-offset: 3px; border-radius: 10px; }
+.rd-wassalni [style*="background: rgb(84, 87, 255)"] :focus-visible,
+.rd-wassalni [style*="background: rgb(30, 31, 92)"] :focus-visible { outline-color: #FFFFFF; }
+
+.rd-sanou a { color: #C084FC; }
+.rd-sanou a:hover { color: #E0C2FF; }
+.rd-sanou :focus-visible { outline: 3px solid #C084FC; outline-offset: 3px; border-radius: 0; }
+.rd-sanou #panneau :focus-visible { outline-color: #050505; }
+
+.rd-bdtech a { color: #0065B3; }
+.rd-bdtech a:hover { color: #004C87; }
+.rd-bdtech :focus-visible { outline: 3px solid #0065B3; outline-offset: 3px; border-radius: 8px; }
+.rd-bdtech [style*="background: rgb(27, 47, 75)"] :focus-visible,
+.rd-bdtech [style*="background: rgb(0, 101, 179)"] :focus-visible { outline-color: #FFFFFF; }
+
+/* Visuels décoratifs : réduits sur petits écrans */
+@media (max-width: 640px) {
+  .fan {
+    transform: scale(0.78);
+    transform-origin: top center;
+  }
+
+  .hang {
+    transform: scale(0.7);
+    transform-origin: top left;
+    height: 380px !important;
+    width: 143%;
+  }
+}
+
+.rd pre code {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Bandeau de disponibilité au-dessus de la navigation */
+.rd-home .promo a:hover { color: #FFFFFF; text-decoration-thickness: 2px; }
+.rd-home .promo a:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 3px; }
+
+/* =========================================================
+   Responsive — en-têtes et ajustements mobiles
+   ========================================================= */
+
+/* Filet de sécurité : jamais de défilement horizontal de la page. */
+.rd { overflow-x: clip; }
+
+/* ---------- Accueil : en-tête ---------- */
+.home-nav { position: relative; }
+.home-nav__mobile-actions { display: none; }
+.home-nav__link { display: inline-flex; align-items: center; min-height: 44px; }
+
+.home-nav__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 999px;
+  background: #141414;
+  color: #F4F3EF;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.home-nav__icon,
+.home-nav__icon::before,
+.home-nav__icon::after {
+  display: block;
+  width: 16px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+.home-nav__icon { position: relative; }
+.home-nav__icon::before,
+.home-nav__icon::after { content: ""; position: absolute; left: 0; }
+.home-nav__icon::before { top: -5px; }
+.home-nav__icon::after { top: 5px; }
+.home-nav__icon[data-open="true"] { background: transparent; }
+.home-nav__icon[data-open="true"]::before { transform: translateY(5px) rotate(45deg); }
+.home-nav__icon[data-open="true"]::after { transform: translateY(-5px) rotate(-45deg); }
+.rd-home .home-nav__toggle:focus-visible { outline: 3px solid #1F3BB8; outline-offset: 3px; }
+
+@media (max-width: 900px) {
+  .home-nav { flex-wrap: nowrap !important; padding: 12px 20px !important; }
+  .home-nav__mobile-actions { display: flex; align-items: center; gap: 6px; flex: none; }
+  .home-nav__lang { display: none; }
+  .home-nav__list {
+    display: none !important;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    flex-direction: column;
+    flex-wrap: nowrap !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    padding: 4px 20px 24px !important;
+    background: #F4F3EF;
+    border-top: 1px solid #D9D7D0;
+    border-bottom: 1px solid #D9D7D0;
+    box-shadow: 0 18px 32px rgba(20, 20, 20, 0.1);
+  }
+  .home-nav__list[data-open="true"] { display: flex !important; }
+  .home-nav__list > li:not(:last-child) { border-bottom: 1px solid #E4E2DB; }
+  .home-nav__link {
+    width: 100%;
+    min-height: 56px;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .home-nav__cta { box-sizing: border-box; width: 100%; justify-content: center; min-height: 52px !important; margin-top: 18px; font-size: 17px; }
+  .home-nav > a { white-space: nowrap; min-width: 0; }
+}
+
+@media (max-width: 380px) {
+  .home-nav { padding: 10px 16px !important; gap: 8px !important; }
+  .home-nav__brand svg { height: 32px; width: auto; }
+  .home-nav__list { padding: 4px 16px 20px !important; }
+  .home-nav__toggle { padding: 0 13px; }
+}
+
+/* Très petits écrans : le bouton garde son nom « Menu » pour les lecteurs d'écran, mais n'affiche que l'icône. */
+@media (max-width: 359px) {
+  .home-nav__toggle { padding: 0; width: 44px; justify-content: center; }
+  .home-nav__toggle-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}
+
+/* ---------- Études de cas : en-tête ---------- */
+@media (max-width: 600px) {
+  .cs-nav { flex-wrap: nowrap !important; gap: 8px !important; padding: 10px 16px !important; }
+  .cs-nav > a svg:last-child { height: 28px; width: auto; }
+  .cs-nav > div { flex-wrap: nowrap !important; gap: 6px !important; }
+  .cs-nav__cta { padding: 0 14px !important; white-space: nowrap; }
+}
+
+/* ---------- Accueil : parcours en une colonne sur mobile ---------- */
+@media (max-width: 560px) {
+  .rd-home li[style*="grid-template-columns: 185px"] { grid-template-columns: minmax(0, 1fr) !important; gap: 4px !important; }
+}
+
+/* Lien isolé : zone cliquable d'au moins 24 px (WCAG 2.5.8). */
+.rd main a[href="/accessibility/"] { display: inline-block; padding-block: 4px; }
+
+/* ---------- Sanou : tableau du tableau de bord sur très petit écran ---------- */
+@media (max-width: 420px) {
+  .rd-sanou [style*="grid-template-columns: 2fr 1fr 1fr 1.2fr 1fr auto"] {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1.2fr) auto !important;
+  }
+  .rd-sanou [style*="grid-template-columns: 2fr 1fr 1fr 1.2fr 1fr auto"] > :nth-child(3),
+  .rd-sanou [style*="grid-template-columns: 2fr 1fr 1fr 1.2fr 1fr auto"] > :nth-child(4) { display: none; }
+}
+
+/* ---------- Wassalni : pastilles numérotées sur très petit écran ---------- */
+@media (max-width: 359px) {
+  .rd-wassalni span[style*="right: -14px"] { right: -6px !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-nav__icon, .home-nav__icon::before, .home-nav__icon::after { transition: none; }
+}
+
+/* ---------- Wassalni : logo du hero sur petit écran ---------- */
+.rd-wassalni svg[viewBox="0 0 34 42"] { flex: none; }
+@media (max-width: 400px) {
+  .rd-wassalni p[style*="clamp(48px, 7vw, 92px)"] { font-size: 42px !important; }
+  .rd-wassalni p[style*="clamp(48px, 7vw, 92px)"] > svg { width: 40px; height: 50px; }
+}
+
+/* ---------- Accueil : « Ma façon de travailler » en frise verticale quand les 4 étapes ne tiennent plus sur une ligne ---------- */
+@media (max-width: 1000px) {
+  .rd-home ol[style*="minmax(min(100%, 230px), 1fr)"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+    border-top: none !important;
+    border-left: 2px solid #141414;
+    margin-left: 14px !important;
+  }
+  .rd-home ol[style*="minmax(min(100%, 230px), 1fr)"] > li {
+    position: relative;
+    padding: 0 0 36px 32px !important;
+    gap: 8px !important;
+  }
+  .rd-home ol[style*="minmax(min(100%, 230px), 1fr)"] > li:last-child { padding-bottom: 0 !important; }
+  .rd-home ol[style*="minmax(min(100%, 230px), 1fr)"] > li > span[aria-hidden="true"]:first-child {
+    position: absolute;
+    left: -21px;
+    top: 10px;
+    margin: 0 !important;
+  }
+  .rd-home ol[style*="minmax(min(100%, 230px), 1fr)"] > li > span:nth-child(2) { font-size: 44px !important; }
+}
+
+/* ---------- Accueil : carte Sanou, mini-panneau entièrement visible ---------- */
+@media (max-width: 520px) {
+  .rd-home div[style*="right: 36px"][style*="width: 230px"] { right: 16px !important; bottom: 16px !important; width: auto !important; left: 16px; max-width: 230px; margin-left: auto; }
+}
+
+/* ---------- Wassalni : courbe de ressenti lisible sur mobile ---------- */
+@media (max-width: 700px) {
+  .rd-wassalni svg[viewBox="0 0 900 300"] { min-width: 620px; }
+  .rd-wassalni ol[style*="repeat(5, minmax(0"] { grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)) !important; }
+}
+
+/* ---------- Sanou : « Démarche » en frise verticale quand les 6 étapes ne tiennent plus sur une ligne ---------- */
+@media (max-width: 1100px) {
+  .rd-sanou ol[style*="minmax(min(100%, 170px), 1fr)"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+    border-top: none !important;
+    border-left: 2px solid #FFFFFF;
+    margin-left: 9px !important;
+  }
+  .rd-sanou ol[style*="minmax(min(100%, 170px), 1fr)"] > li {
+    position: relative;
+    padding: 0 0 28px 26px !important;
+    gap: 6px !important;
+  }
+  .rd-sanou ol[style*="minmax(min(100%, 170px), 1fr)"] > li:last-child { padding-bottom: 0 !important; }
+  .rd-sanou ol[style*="minmax(min(100%, 170px), 1fr)"] > li > span:first-child {
+    position: absolute;
+    left: -10px;
+    top: 0;
+    margin: 0 !important;
+  }
+}
+
+/* Études de cas, très petits écrans : signature et bouton resserrés pour tenir sur une ligne. */
+@media (max-width: 380px) {
+  .cs-nav { padding: 10px 12px !important; gap: 6px !important; }
+  .cs-nav > a { gap: 4px !important; }
+  .cs-nav > a svg:last-child { height: 22px; }
+  .cs-nav__cta { padding: 0 10px !important; font-size: 13px !important; }
+  .cs-nav .lang-switch { min-width: 40px !important; padding: 0 6px !important; }
+}
+
+/* =========================================================
+   FDS Institut — « from paper to platform »
+   ========================================================= */
+.rd-fds a { color: inherit; }
+.rd-fds :focus-visible { outline: 3px solid currentColor; outline-offset: 3px; border-radius: 6px; }
+.rd-fds .mono { font-family: 'JetBrains Mono', monospace; }
+.rd-fds .hand { font-family: 'Caveat', cursive; }
+.rd-fds .paper { background: #FBF6EA; box-shadow: 0 1px 0 rgba(0, 24, 41, .05), 0 22px 34px -20px rgba(0, 24, 41, .45); }
+.rd-fds .floaty { animation: fds-floaty 7s ease-in-out infinite; }
+.rd-fds .floaty2 { animation: fds-floaty 9s ease-in-out infinite reverse; }
+.rd-fds .orbit { animation: fds-orbit 18s linear infinite; }
+.rd-fds .stamp { animation: fds-stamp 5s ease-out infinite; }
+.rd-fds .print { animation: fds-print 6s cubic-bezier(.3, .7, .2, 1) infinite; }
+.rd-fds .pulse { animation: fds-pulse 2.4s ease-in-out infinite; }
+.rd-fds .blink { animation: fds-blink 1.8s steps(2) infinite; }
+.rd-fds .swing { transform-origin: 50% 0; animation: fds-swing 4s ease-in-out infinite; }
+@keyframes fds-floaty { 0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); } 50% { transform: translateY(-16px) rotate(var(--r, 0deg)); } }
+@keyframes fds-orbit { to { transform: rotate(360deg); } }
+@keyframes fds-stamp { 0%, 8% { transform: scale(2.2) rotate(-14deg); opacity: 0; } 16% { transform: scale(1) rotate(-14deg); opacity: .92; } 85% { opacity: .92; transform: scale(1) rotate(-14deg); } 100% { opacity: 0; transform: scale(1) rotate(-14deg); } }
+@keyframes fds-print { 0%, 10% { transform: translateY(-92%); } 55%, 92% { transform: translateY(0); } 100% { transform: translateY(0); opacity: 0; } }
+@keyframes fds-pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.25); opacity: .6; } }
+@keyframes fds-blink { 50% { opacity: .25; } }
+@keyframes fds-swing { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .rd-fds .floaty, .rd-fds .floaty2, .rd-fds .orbit, .rd-fds .stamp, .rd-fds .print,
+  .rd-fds .pulse, .rd-fds .blink, .rd-fds .swing { animation: none; }
+  .rd-fds .floaty, .rd-fds .floaty2 { transform: rotate(var(--r, 0deg)); }
+  .rd-fds .stamp { transform: rotate(-14deg); opacity: .92; }
+}
+
+/* FDS — mobile : passeport sur 2 colonnes, maquette du back-office sans menu latéral */
+@media (max-width: 600px) {
+  .rd-fds ol[style*="minmax(140px, 1fr)"] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 14px !important; padding: 22px !important; min-height: 0 !important; }
+  .rd-fds ol[style*="minmax(140px, 1fr)"] > li { padding: 6px !important; }
+  .rd-fds div[style*="background: linear-gradient(135deg, #0A2B45, #001829)"] { min-height: 240px !important; padding: 24px !important; }
+  .rd-fds div[style*="flex: 0 0 150px"] { display: none !important; }
+  .rd-fds div[style*="min-height: 380px; border-radius: 6px"] { min-height: 300px !important; }
+}

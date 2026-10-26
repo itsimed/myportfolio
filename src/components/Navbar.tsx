@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLanguage } from '../hooks/useLanguage';
+import Signature from './Signature';
 
 const Navbar = () => {
   const { language, setLanguage, t } = useLanguage();
@@ -7,7 +8,7 @@ const Navbar = () => {
   const isHomePage = window.location.pathname === '/';
 
   const navigationItems = [
-    { label: t('portfolio2026.navigation.cases'), href: '#cas' },
+    { label: t('portfolio2026.navigation.cases'), href: '#travaux' },
     { label: t('portfolio2026.navigation.method'), href: '#methode' },
     { label: t('portfolio2026.navigation.about'), href: '#apropos' },
     { label: t('portfolio2026.navigation.contact'), href: '#contact' },
@@ -31,9 +32,10 @@ const Navbar = () => {
         <a
           href={homeHref}
           onClick={closeMenu}
-          className="font-display text-xl font-extrabold text-foreground no-underline"
+          className="inline-flex min-h-11 items-center text-foreground no-underline"
         >
-          Imed Belouettar
+          <Signature height={34} swash />
+          <span className="sr-only">Imed Belouettar</span>
         </a>
 
         <button

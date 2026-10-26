@@ -153,7 +153,7 @@ export const translations = {
 
     // Footer
     footer: {
-      copyright: '© 2025 - Imed Eddine Belouettar. Tous droits réservés.',
+      copyright: '© 2026 Imed Belouettar. Tous droits réservés.',
       madeWith: 'Fait avec ❤️ en utilisant Vite, React & TailwindCSS',
     },
 
@@ -170,7 +170,6 @@ export const translations = {
         accessibility: 'Accessibilité : conformité visée RGAA 4.1',
       },
       hero: {
-        availability: 'Recherche une alternance en Product Design – à partir de [DATE]',
         heading: 'Je conçois des parcours numériques',
         headingEmphasis: 'utilisables par tous.',
         description: 'Product Designer UX/UI, spécialisé en accessibilité numérique (RGAA). Étudiant en Master 2 Technologie & Handicap à l’Université Paris 8.',
@@ -275,7 +274,7 @@ export const translations = {
     },
     portfolio: {
       hero: {
-        portraitAlt: 'Portrait de Imed Eddine Belouettar',
+        portraitAlt: 'Portrait de Imed Belouettar',
         location: 'Paris, France · Ouvert aux opportunités',
         scrollHint: 'Faites défiler pour découvrir mon travail',
       },
@@ -328,6 +327,7 @@ export const translations = {
           1: 'Structure sémantique, titres hiérarchisés et libellés explicites pour les formulaires.',
           2: 'Indicateur de focus visible, contrastes renforcés pour les contrôles et prise en compte de la réduction des animations.',
           3: 'Contenus disponibles en français et en anglais.',
+          4: 'Vérification automatique (axe-core) de chaque page avant chaque mise en ligne.',
         },
         contactTitle: 'Signaler un problème',
         contact: 'Si une partie du site vous est difficile à utiliser, contactez-moi à l’adresse',
@@ -342,11 +342,11 @@ export const translations = {
         scrollToTop: 'Retour en haut de la page',
       },
       metadata: {
-        homeTitle: 'Imed Eddine Belouettar — Portfolio',
-        homeDescription: 'Portfolio d’Imed Eddine Belouettar, designer UI/UX et développeur front-end.',
-        caseStudySuffix: 'Étude de cas — Imed Eddine Belouettar',
-        accessibilityDescription: 'Déclaration d’accessibilité du portfolio d’Imed Eddine Belouettar.',
-        notFoundTitle: 'Page introuvable — Imed Eddine Belouettar',
+        homeTitle: 'Imed Belouettar — Portfolio',
+        homeDescription: 'Portfolio d’Imed Belouettar, designer UI/UX et développeur front-end.',
+        caseStudySuffix: 'Étude de cas — Imed Belouettar',
+        accessibilityDescription: 'Déclaration d’accessibilité du portfolio d’Imed Belouettar.',
+        notFoundTitle: 'Page introuvable — Imed Belouettar',
         notFoundDescription: 'La page demandée est introuvable dans le portfolio.',
       },
     },
@@ -513,7 +513,7 @@ export const translations = {
 
     // Footer
     footer: {
-      copyright: '© 2025 - Imed Eddine Belouettar. All rights reserved.',
+      copyright: '© 2026 Imed Belouettar. All rights reserved.',
       madeWith: 'Made with ❤️ using Vite, React & TailwindCSS',
     },
 
@@ -530,7 +530,6 @@ export const translations = {
         accessibility: 'Accessibility: RGAA 4.1 compliance target',
       },
       hero: {
-        availability: 'Looking for a Product Design apprenticeship – starting [DATE]',
         heading: 'I design digital journeys',
         headingEmphasis: 'that everyone can use.',
         description: 'UX/UI Product Designer specializing in digital accessibility (RGAA). Master’s student in Technology & Disability at Université Paris 8.',
@@ -635,7 +634,7 @@ export const translations = {
     },
     portfolio: {
       hero: {
-        portraitAlt: 'Portrait of Imed Eddine Belouettar',
+        portraitAlt: 'Portrait of Imed Belouettar',
         location: 'Paris, France · Open to opportunities',
         scrollHint: 'Scroll to discover my work',
       },
@@ -688,6 +687,7 @@ export const translations = {
           1: 'Semantic structure, hierarchical headings and explicit form labels.',
           2: 'Visible focus indicator, stronger contrast for controls and support for reduced motion.',
           3: 'Content available in French and English.',
+          4: 'Automated checks (axe-core) on every page before each release.',
         },
         contactTitle: 'Report an issue',
         contact: 'If any part of this site is difficult to use, please contact me at',
@@ -702,11 +702,11 @@ export const translations = {
         scrollToTop: 'Back to top',
       },
       metadata: {
-        homeTitle: 'Imed Eddine Belouettar — Portfolio',
-        homeDescription: 'Portfolio of Imed Eddine Belouettar, UI/UX designer and front-end developer.',
-        caseStudySuffix: 'Case study — Imed Eddine Belouettar',
-        accessibilityDescription: 'Accessibility statement for Imed Eddine Belouettar’s portfolio.',
-        notFoundTitle: 'Page not found — Imed Eddine Belouettar',
+        homeTitle: 'Imed Belouettar — Portfolio',
+        homeDescription: 'Portfolio of Imed Belouettar, UI/UX designer and front-end developer.',
+        caseStudySuffix: 'Case study — Imed Belouettar',
+        accessibilityDescription: 'Accessibility statement for Imed Belouettar’s portfolio.',
+        notFoundTitle: 'Page not found — Imed Belouettar',
         notFoundDescription: 'The requested page could not be found in the portfolio.',
       },
     },

@@ -21,7 +21,7 @@ const AccessibilityPage = () => {
           <section aria-labelledby="accessibility-features">
             <h2 id="accessibility-features" className="text-2xl font-semibold">{t('portfolio.accessibility.featuresTitle')}</h2>
             <ul className="mt-3 list-disc space-y-2 pl-6 leading-relaxed text-muted">
-              {[0, 1, 2, 3].map((index) => (
+              {[0, 1, 2, 3, 4].map((index) => (
                 <li key={index}>{t(`portfolio.accessibility.features.${index}`)}</li>
               ))}
             </ul>
